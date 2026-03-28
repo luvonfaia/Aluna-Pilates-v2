@@ -168,5 +168,8 @@
         "title": "Page Not Found",
         "desc": "The page you are looking for seems to have drifted away. Let's guide you back to center.",
         "back": "Return Home"
+    },
+    "floating_cta": {
+        "contact": "Contact Us"
     }
 }

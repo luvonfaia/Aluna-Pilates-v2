@@ -9,6 +9,7 @@ import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import BackToTop from './components/common/BackToTop';
+import FloatingCTA from './components/common/FloatingCTA';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           </Routes>
         </main>
         <BackToTop />
+        <FloatingCTA />
         <Footer />
       </div>
     </BrowserRouter>

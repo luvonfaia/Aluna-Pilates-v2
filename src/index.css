@@ -4,8 +4,9 @@
   /* Colors */
   --color-aluna-alabaster: #F9F8F6;
   --color-aluna-cream: #F2EFE9;
-  --color-aluna-gold: #D4C5A9;
-  --color-aluna-charcoal: #2A2A2A;
+  --color-aluna-gold: #C9B68A;
+  --color-aluna-gold-light: #E0D3B4;
+  --color-aluna-charcoal: #1E1E1E;
   --color-aluna-stone: #6B665E;
   --color-aluna-earth: #8C7E6A;
 
@@ -23,13 +24,29 @@
     text-wrap: balance;
   }
 
-  /* High Contrast Buttons */
+  /* Primary button — dark on light backgrounds */
   .btn-primary {
-    @apply px-8 py-3 bg-aluna-charcoal text-white rounded-full hover:bg-aluna-gold hover:text-white transition-all uppercase tracking-widest text-xs shadow-md hover:shadow-lg inline-block;
+    @apply px-8 py-3 bg-aluna-charcoal text-white rounded-full hover:bg-aluna-gold hover:text-white transition-all duration-300 uppercase tracking-widest text-xs shadow-sm hover:shadow-md inline-block;
   }
 
+  /* Primary button — white on dark/video backgrounds */
+  .btn-primary-light {
+    @apply px-8 py-3 bg-white text-aluna-charcoal rounded-full hover:bg-aluna-gold hover:text-white transition-all duration-300 uppercase tracking-widest text-xs shadow-sm hover:shadow-md inline-block;
+  }
+
+  /* Ghost button — transparent with white border on dark/video backgrounds */
+  .btn-ghost {
+    @apply px-8 py-3 border border-white/50 text-white hover:bg-white/10 hover:border-white/80 transition-all duration-300 uppercase tracking-widest text-xs rounded-full inline-block;
+  }
+
+  /* Secondary outlined button */
   .btn-secondary {
-    @apply px-8 py-3 border border-aluna-charcoal text-aluna-charcoal hover:bg-aluna-charcoal hover:text-white transition-all uppercase tracking-widest text-xs rounded-full inline-block;
+    @apply px-8 py-3 border border-aluna-charcoal text-aluna-charcoal hover:bg-aluna-charcoal hover:text-white transition-all duration-300 uppercase tracking-widest text-xs rounded-full inline-block;
+  }
+
+  /* Section label — small uppercase eyebrow text */
+  .label-eyebrow {
+    @apply text-aluna-gold uppercase tracking-[0.35em] text-[10px] font-medium;
   }
 }
 
@@ -70,7 +87,7 @@ h6 {
 
 /* Custom Scrollbar for Webkit */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -78,5 +95,9 @@ h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-aluna-gold/50 rounded-full hover:bg-aluna-gold;
+  @apply bg-aluna-gold/40 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-aluna-gold/70;
 }

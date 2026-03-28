@@ -168,5 +168,8 @@
         "title": "Pagina Nu a Fost Găsită",
         "desc": "Pagina pe care o căutați pare să fi dispărut. Haideți să vă ghidăm înapoi la centru.",
         "back": "Înapoi Acasă"
+    },
+    "floating_cta": {
+        "contact": "Contactează-ne"
     }
 }
