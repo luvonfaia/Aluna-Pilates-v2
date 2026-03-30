@@ -3,9 +3,11 @@ import { motion } from 'framer-motion';
 import { useRef, useEffect, lazy, Suspense } from 'react';
 import spotlightImg from '../assets/spotlight-studio.jpg';
 import { scrollToSection } from '../hooks/useActiveSection';
+import WaveTransition from '../components/canvas/WaveTransition';
 
-// Lazy-load so Three.js is fetched async after the initial render
-const HeroParticles = lazy(() => import('../components/canvas/HeroParticles'));
+// Lazy-load Three.js components so the vendor chunk loads async after first paint
+const HeroParticles   = lazy(() => import('../components/canvas/HeroParticles'));
+const PhilosophyTorus = lazy(() => import('../components/canvas/PhilosophyTorus'));
 
 export default function Home() {
     const { t } = useTranslation();
@@ -103,8 +105,16 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* Wave divider — rises between hero and philosophy on scroll */}
+            <WaveTransition />
+
             {/* Philosophy */}
-            <section className="py-36 bg-aluna-alabaster text-center relative overflow-hidden">
+            <section id="philosophy" className="py-36 bg-aluna-alabaster text-center relative overflow-hidden">
+                {/* 3D torus rings — lazy-loaded, WebGL, rotates on scroll */}
+                <Suspense fallback={null}>
+                    <PhilosophyTorus />
+                </Suspense>
+
                 {/* Decorative rings */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-aluna-gold/8 pointer-events-none" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full border border-aluna-gold/12 pointer-events-none" />
