@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-aluna-alabaster: #F9F8F6;
+  --color-aluna-cream: #F2EFE9;
+  --color-aluna-gold: #C9B68A;
+  --color-aluna-gold-light: #E0D3B4;
+  --color-aluna-charcoal: #1E1E1E;
+  --color-aluna-stone: #6B665E;
+  --color-aluna-earth: #8C7E6A;
+
+  /* Typography */
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-accent: "Montserrat", sans-serif;
+
+  /* Animations */
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Scroll offset for fixed navbar on section anchors */
+#about,
+#classes,
+#gallery {
+  scroll-margin-top: 160px;
+}
+
+@media (max-width: 768px) {
+  #about,
+  #classes,
+  #gallery {
+    scroll-margin-top: 120px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Primary button — dark on light backgrounds */
+  .btn-primary {
+    @apply px-8 py-3 bg-aluna-charcoal text-white rounded-full hover:bg-aluna-gold hover:text-white transition-all duration-300 uppercase tracking-widest text-xs shadow-sm hover:shadow-md inline-block;
+  }
+
+  /* Primary button — white on dark/video backgrounds */
+  .btn-primary-light {
+    @apply px-8 py-3 bg-white text-aluna-charcoal rounded-full hover:bg-aluna-gold hover:text-white transition-all duration-300 uppercase tracking-widest text-xs shadow-sm hover:shadow-md inline-block;
+  }
+
+  /* Ghost button — transparent with white border on dark/video backgrounds */
+  .btn-ghost {
+    @apply px-8 py-3 border border-white/50 text-white hover:bg-white/10 hover:border-white/80 transition-all duration-300 uppercase tracking-widest text-xs rounded-full inline-block;
+  }
+
+  /* Secondary outlined button */
+  .btn-secondary {
+    @apply px-8 py-3 border border-aluna-charcoal text-aluna-charcoal hover:bg-aluna-charcoal hover:text-white transition-all duration-300 uppercase tracking-widest text-xs rounded-full inline-block;
+  }
+
+  /* Section label — small uppercase eyebrow text */
+  .label-eyebrow {
+    @apply text-aluna-gold uppercase tracking-[0.35em] text-[10px] font-medium;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+  @apply bg-aluna-alabaster text-aluna-charcoal antialiased;
+}
+
+body {
+  @apply font-sans;
+}
+
+::selection {
+  @apply bg-aluna-gold/30 text-aluna-charcoal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-serif;
+}
+
+/* Custom Scrollbar for Webkit */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-aluna-alabaster;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-aluna-gold/40 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-aluna-gold/70;
+}

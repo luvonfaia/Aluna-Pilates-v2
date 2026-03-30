@@ -1,0 +1,207 @@
+{
+    "nav": {
+        "about": "About",
+        "classes": "Classes",
+        "gallery": "Gallery",
+        "contact": "Contact",
+        "book": "Book Now"
+    },
+    "home": {
+        "hero": {
+            "title": "Refine Your Movement",
+            "subtitle": "Experience the art of Pilates in a sanctuary of calm.",
+            "cta": "Explore Classes"
+        },
+        "philosophy": {
+            "title": "Philosophy",
+            "quote": "\"Physical fitness is the first requisite of happiness.\"",
+            "desc": "We believe in the transformative power of mindful movement. Our studio is designed as a sanctuary to help you find balance, strength, and grace through the art of Classical and Contemporary Pilates."
+        },
+        "classes_teaser": {
+            "title": "Our Experience",
+            "subtitle": "Find the perfect class to match your journey, from foundational techniques to advanced flows.",
+            "view_all": "View All Classes",
+            "learn_more": "Learn More"
+        },
+        "class_types": {
+            "reformer_flow": {
+                "title": "Reformer Flow",
+                "desc": "A rhythmic, flowing class focusing on seamless transitions."
+            },
+            "sculpt_tone": {
+                "title": "Sculpt & Tone",
+                "desc": "Targeted resistance training to build definition and endurance."
+            },
+            "stretch_restore": {
+                "title": "Stretch & Restore",
+                "desc": "Focus on flexibility, breath, and releasing tension."
+            }
+        },
+        "levels": {
+            "all": "All Levels",
+            "intermediate": "Intermediate",
+            "gentle": "Gentle",
+            "beginner": "Beginner"
+        },
+        "spotlight": {
+            "title": "Guided by Experts",
+            "desc": "Our certified instructors bring years of experience and a passion for personalized guidance. We focus on form, alignment, and individual progression.",
+            "cta": "Meet the Team"
+        }
+    },
+    "about": {
+        "hero": {
+            "title": "Our Story",
+            "desc": "ALUNA was founded on the belief that movement is medicine. We curated a space where classical tradition meets contemporary flow."
+        },
+        "sanctuary": {
+            "title": "The Sanctuary",
+            "desc1": "Stepping into ALUNA is a breath of fresh air. We designed our studio to be a retreat from the noise of the city—a place where you can reconnect with your body and mind.",
+            "desc2": "Our equipment is top-of-the-line, chosen for its smoothness and safety. Every detail, from the lighting to the scent, is curated to enhance your practice."
+        },
+        "instructors": {
+            "title": "Our Instructors",
+            "role": "Senior Teacher",
+            "bio": "Specializes in rehabilitation and athletic conditioning. Brings 10+ years of movement experience."
+        }
+    },
+    "classes": {
+        "title": "Class Offerings",
+        "subtitle": "Small group reformer classes designed to lengthen, strengthen, and align.",
+        "list": {
+            "foundations": {
+                "title": "Reformer Foundations",
+                "desc": "The perfect starting point. Focus on equipment safety, basic pilates principles, and building core stability."
+            },
+            "signature": {
+                "title": "Signature Flow",
+                "desc": "Our signature open-level class. A rhythmic, full-body workout that seamlessly transitions between exercises."
+            },
+            "dynamic": {
+                "title": "Dynamic Sculpt",
+                "desc": "A higher intensity class incorporating props (weights, bands, balls) to challenge stability and build lean muscle."
+            },
+            "jumpboard": {
+                "title": "Jumpboard Cardio",
+                "desc": "Low-impact cardio using the jumpboard attachment. Raises heart rate while maintaining pilates alignment."
+            }
+        },
+        "intensity": "Intensity",
+        "intensities": {
+            "low_medium": "Low-Medium",
+            "medium": "Medium",
+            "high": "High"
+        },
+        "investment": {
+            "title": "Investment",
+            "packages": {
+                "drop_in": "Drop In",
+                "pack_5": "5 Class Pack",
+                "pack_10": "10 Class Pack",
+                "monthly": "Monthly Unlimited"
+            },
+            "details": {
+                "days_14": "Valid for 14 days",
+                "months_2": "Valid for 2 months",
+                "months_4": "Valid for 4 months",
+                "commitment": "Billed monthly. 3 month commitment."
+            },
+            "purchase": "Purchase"
+        }
+    },
+    "gallery": {
+        "title": "The Space",
+        "subtitle": "A glimpse into our sanctuary."
+    },
+    "contact": {
+        "title": "Connect",
+        "subtitle": "We are here to answer your questions.",
+        "visit": {
+            "title": "Visit Us",
+            "address": "Address",
+            "hours": "Hours",
+            "contact": "Contact",
+            "mon_fri": "Mon - Fri",
+            "sat_sun": "Sat - Sun"
+        },
+        "form": {
+            "title": "Send a Message",
+            "name": "Name",
+            "email": "Email",
+            "message": "Message",
+            "placeholder_name": "Your Name",
+            "placeholder_email": "email@example.com",
+            "placeholder_message": "How can we help you?",
+            "submit": "Send Message",
+            "success": "Thank you for your message. We will be in touch shortly.",
+            "required": "This field is required",
+            "email_required": "Valid email is required"
+        },
+        "map": "Map Integration"
+    },
+    "footer": {
+        "tagline": "A sanctuary for reformative movement. Find your balance, strength, and grace in our refined studio space.",
+        "sections": {
+            "studio": "Studio",
+            "support": "Support",
+            "newsletter": "Newsletter"
+        },
+        "links": {
+            "about": "About",
+            "classes": "Classes",
+            "instructors": "Instructors",
+            "pricing": "Pricing",
+            "contact": "Contact",
+            "faq": "FAQ",
+            "privacy": "Privacy Policy",
+            "terms": "Terms"
+        },
+        "newsletter": {
+            "desc": "Subscribe to receive updates and wellness tips.",
+            "placeholder": "Your email address",
+            "button": "Subscribe"
+        },
+        "rights": "All rights reserved.",
+        "credit": "Designed for Wellness."
+    },
+    "not_found": {
+        "title": "Page Not Found",
+        "desc": "The page you are looking for seems to have drifted away. Let's guide you back to center.",
+        "back": "Return Home"
+    },
+    "floating_cta": {
+        "contact": "Contact Us"
+    },
+    "contact_modal": {
+        "form": {
+            "name_label": "Name",
+            "name_placeholder": "Your Name",
+            "email_label": "Email",
+            "email_placeholder": "your@email.com",
+            "phone_label": "Phone",
+            "phone_placeholder": "+40 700 123 456",
+            "class_label": "Which class interests you?",
+            "class_placeholder": "Select a class",
+            "privacy_label": "I agree to the ",
+            "privacy_link": "Privacy Policy",
+            "submit": "Send Inquiry",
+            "submitting": "Sending..."
+        },
+        "validation": {
+            "required": "This field is required",
+            "name_min": "Name must be at least 2 characters",
+            "email_invalid": "Please enter a valid email",
+            "phone_invalid": "Please enter a valid phone number"
+        },
+        "states": {
+            "success_title": "Thank You!",
+            "success_message": "We've received your inquiry and will be in touch within 24 hours.",
+            "error_title": "Oops!",
+            "error_message": "Something went wrong. Please try again."
+        },
+        "actions": {
+            "retry": "Try Again",
+            "close": "Close"
+        }
+    }
+}
