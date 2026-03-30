@@ -1,8 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, lazy, Suspense } from 'react';
 import spotlightImg from '../assets/spotlight-studio.jpg';
 import { scrollToSection } from '../hooks/useActiveSection';
+
+// Lazy-load so Three.js is fetched async after the initial render
+const HeroParticles = lazy(() => import('../components/canvas/HeroParticles'));
 
 export default function Home() {
     const { t } = useTranslation();
@@ -36,6 +39,11 @@ export default function Home() {
         <div id="home" className="overflow-hidden">
             {/* Hero Section – Full-screen video background */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
+                {/* Gold particle field — lazy-loaded WebGL canvas, z-2, pointer-events none */}
+                <Suspense fallback={null}>
+                    <HeroParticles />
+                </Suspense>
+
                 {/* Video */}
                 <video
                     ref={videoRef}
