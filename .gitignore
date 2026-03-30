@@ -18,16 +18,10 @@ dist-ssr
 .idea
 .DS_Store
 *.suo
-
-# Local aluna-site directory
-aluna-site/
-.claude/
-Screenshots/
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-.claude/
-Screenshots/
-**/.mcp.json
+# Consolidated project
+aluna-site/
