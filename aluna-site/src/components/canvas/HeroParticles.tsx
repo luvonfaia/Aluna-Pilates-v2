@@ -38,8 +38,8 @@ const VERT = /* glsl */ `
 
     vec4 mvPos = modelViewMatrix * vec4(pos, 1.0);
 
-    // Size — attenuate with depth, shrink on scroll
-    float size = aSize * uPixelRatio * (260.0 / -mvPos.z);
+    // Size in pixels — simple scale, no depth amplification
+    float size = aSize * uPixelRatio * 2.5;
     size *= (1.0 - uScrollProgress * 0.6);
     gl_PointSize = max(size, 0.5);
 
