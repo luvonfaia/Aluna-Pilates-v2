@@ -1,0 +1,175 @@
+{
+    "nav": {
+        "about": "Despre",
+        "classes": "Clase",
+        "gallery": "Galerie",
+        "contact": "Contact",
+        "book": "Rezervă"
+    },
+    "home": {
+        "hero": {
+            "title": "Rafinează-ți Mișcarea",
+            "subtitle": "Experimentează arta Pilates într-un sanctuar al calmului.",
+            "cta": "Explorează Clasele"
+        },
+        "philosophy": {
+            "title": "Filozofie",
+            "quote": "\"Forma fizică este prima condiție a fericirii.\"",
+            "desc": "Credem în puterea transformatoare a mișcării conștiente. Studioul nostru este conceput ca un sanctuar pentru a te ajuta să găsești echilibru, forță și grație prin arta Pilates-ului Clasic și Contemporan."
+        },
+        "classes_teaser": {
+            "title": "Experiența Noastră",
+            "subtitle": "Găsește clasa perfectă pentru călătoria ta, de la tehnici fundamentale la flow-uri avansate.",
+            "view_all": "Vezi Toate Clasele",
+            "learn_more": "Află Mai Multe"
+        },
+        "class_types": {
+            "reformer_flow": {
+                "title": "Reformer Flow",
+                "desc": "O clasă ritmică, fluidă, concentrată pe tranziții fără efort."
+            },
+            "sculpt_tone": {
+                "title": "Sculpt & Tone",
+                "desc": "Antrenament de rezistență țintit pentru a construi definiție și anduranță."
+            },
+            "stretch_restore": {
+                "title": "Stretch & Restore",
+                "desc": "Concentrare pe flexibilitate și eliberarea tensiunii."
+            }
+        },
+        "levels": {
+            "all": "Toate Nivelurile",
+            "intermediate": "Intermediar",
+            "gentle": "Ușor",
+            "beginner": "Începător"
+        },
+        "spotlight": {
+            "title": "Ghidați de Experți",
+            "desc": "Instructorii noștri certificați aduc ani de experiență și o pasiune pentru ghidare personalizată. Ne concentrăm pe formă, aliniament și progres individual.",
+            "cta": "Cunoaște Echipa"
+        }
+    },
+    "about": {
+        "hero": {
+            "title": "Povestea Noastră",
+            "desc": "ALUNA a fost fondată pe credința că mișcarea este medicament. Am curat un spațiu unde tradiția clasică întâlnește fluxul contemporan."
+        },
+        "sanctuary": {
+            "title": "Sanctuarul",
+            "desc1": "Pășind în ALUNA este o gură de aer proaspăt. Am proiectat studioul nostru să fie un refugiu de zgomotul orașului—un loc unde te poți reconecta cu corpul și mintea ta.",
+            "desc2": "Echipamentul nostru este de top, ales pentru finețe și siguranță. Fiecare detaliu, de la iluminare la parfum, este curat pentru a-ți îmbunătăți practica."
+        },
+        "instructors": {
+            "title": "Instructorii Noștri",
+            "role": "Instructor Senior",
+            "bio": "Specializează în reabilitare și condiționare atletică. Aduce peste 10 ani de experiență în mișcare."
+        }
+    },
+    "classes": {
+        "title": "Oferta de Clase",
+        "subtitle": "Clase de reformer de grup restrâns concepute pentru a alungi, întări și alinia.",
+        "list": {
+            "foundations": {
+                "title": "Reformer Foundations",
+                "desc": "Punctul perfect de plecare. Concentrare pe siguranța echipamentului, principii de bază pilates și construirea stabilității nucleului."
+            },
+            "signature": {
+                "title": "Signature Flow",
+                "desc": "Clasa noastră semnătură open-level. Un antrenament ritmic, full-body care tranziționează lin între exerciții."
+            },
+            "dynamic": {
+                "title": "Dynamic Sculpt",
+                "desc": "O clasă de intensitate mai mare care încorporează accesorii pentru a provoca stabilitatea și a construi musculatură definită."
+            },
+            "jumpboard": {
+                "title": "Jumpboard Cardio",
+                "desc": "Cardio cu impact redus folosind placa de sărituri. Crește ritmul cardiac menținând aliniamentul pilates."
+            }
+        },
+        "intensity": "Intensitate",
+        "intensities": {
+            "low_medium": "Scăzută-Medie",
+            "medium": "Medie",
+            "high": "Ridică"
+        },
+        "investment": {
+            "title": "Investiție",
+            "packages": {
+                "drop_in": "O singură ședință",
+                "pack_5": "Pachet 5 Clase",
+                "pack_10": "Pachet 10 Clase",
+                "monthly": "Abonament Lunar"
+            },
+            "details": {
+                "days_14": "Valabil 14 zile",
+                "months_2": "Valabil 2 luni",
+                "months_4": "Valabil 4 luni",
+                "commitment": "Facturat lunar. Angajament 3 luni."
+            },
+            "purchase": "Cumpără"
+        }
+    },
+    "gallery": {
+        "title": "Spațiul",
+        "subtitle": "O privire în sanctuarul nostru."
+    },
+    "contact": {
+        "title": "Conectează-te",
+        "subtitle": "Suntem aici pentru a răspunde întrebărilor tale.",
+        "visit": {
+            "title": "Vizitează-ne",
+            "address": "Adresă",
+            "hours": "Program",
+            "contact": "Contact",
+            "mon_fri": "Luni - Vineri",
+            "sat_sun": "Sâmbătă - Duminică"
+        },
+        "form": {
+            "title": "Trimite un Mesaj",
+            "name": "Nume",
+            "email": "Email",
+            "message": "Mesaj",
+            "placeholder_name": "Numele Tău",
+            "placeholder_email": "email@exemplu.com",
+            "placeholder_message": "Cu ce te putem ajuta?",
+            "submit": "Trimite Mesaj",
+            "success": "Mulțumim pentru mesaj. Te vom contacta în curând.",
+            "required": "Acest câmp este obligatoriu",
+            "email_required": "Emailul valid este obligatoriu"
+        },
+        "map": "Integrare Hartă"
+    },
+    "footer": {
+        "tagline": "Un sanctuar pentru mișcare reformativă. Găsește-ți echilibrul, forța și grația în spațiul nostru rafinat.",
+        "sections": {
+            "studio": "Studio",
+            "support": "Suport",
+            "newsletter": "Newsletter"
+        },
+        "links": {
+            "about": "Despre",
+            "classes": "Clase",
+            "instructors": "Instructori",
+            "pricing": "Tarife",
+            "contact": "Contact",
+            "faq": "Întrebări Frecvente",
+            "privacy": "Politica de Confidențialitate",
+            "terms": "Termeni și Condiții"
+        },
+        "newsletter": {
+            "desc": "Abonează-te pentru a primi noutăți și sfaturi de wellness.",
+            "placeholder": "Adresa ta de email",
+            "button": "Abonează-te"
+        },
+        "rights": "Toate drepturile rezervate.",
+        "credit": "Creat pentru Wellness."
+    },
+    "not_found": {
+        "title": "Pagina Nu a Fost Găsită",
+        "desc": "Pagina pe care o căutați pare să fi dispărut. Haideți să vă ghidăm înapoi la centru.",
+        "back": "Înapoi Acasă"
+    },
+    "floating_cta": {
+        "contact": "Contactează-ne"
+    }
+}
