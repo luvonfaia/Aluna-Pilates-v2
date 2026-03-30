@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SCREENSHOTS_DIR = path.join(__dirname, 'Screenshots');
-const BASE_URL = 'http://localhost:5174';
+const BASE_URL = 'http://localhost:5175';
 
 async function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
 

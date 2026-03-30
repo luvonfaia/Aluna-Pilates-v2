@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { AdaptiveDpr } from '@react-three/drei';
 import * as THREE from 'three';
 import { ScrollTrigger } from '../../lib/scrollTrigger';
 
@@ -81,6 +82,9 @@ function TorusScene() {
 // (needs overflow-hidden on the parent to clip the canvas correctly)
 // -----------------------------------------------------------------------------
 export default function PhilosophyTorus() {
+  // Skip on mobile — saves a WebGL context and CPU/GPU budget
+  if (typeof window !== 'undefined' && window.innerWidth < 768) return null;
+
   return (
     <Canvas
       camera={{ position: [0, 0, 3.5], fov: 45 }}
@@ -96,6 +100,8 @@ export default function PhilosophyTorus() {
         background: 'transparent',
       }}
     >
+      {/* Automatically reduces pixel-ratio when frame rate drops */}
+      <AdaptiveDpr pixelated />
       <TorusScene />
     </Canvas>
   );

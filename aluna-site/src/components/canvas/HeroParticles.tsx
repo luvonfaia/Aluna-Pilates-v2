@@ -1,5 +1,6 @@
 import { useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { AdaptiveDpr } from '@react-three/drei';
 import * as THREE from 'three';
 import { getLenis } from '../../lib/lenis';
 
@@ -153,10 +154,8 @@ function ParticleField() {
 export default function HeroParticles() {
   // Bail out on browsers without WebGL
   if (typeof window !== 'undefined') {
-    const canvas = document.createElement('canvas');
-    if (!canvas.getContext('webgl2') && !canvas.getContext('webgl')) {
-      return null;
-    }
+    const c = document.createElement('canvas');
+    if (!c.getContext('webgl2') && !c.getContext('webgl')) return null;
   }
 
   return (
@@ -171,8 +170,11 @@ export default function HeroParticles() {
         height: '100%',
         pointerEvents: 'none',
         zIndex: 2,
+        background: 'transparent',
       }}
     >
+      {/* Automatically reduces pixel-ratio when frame rate drops */}
+      <AdaptiveDpr pixelated />
       <ParticleField />
     </Canvas>
   );
