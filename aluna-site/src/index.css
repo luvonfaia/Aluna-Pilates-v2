@@ -19,20 +19,6 @@
   --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Scroll offset for fixed navbar on section anchors */
-#about,
-#classes,
-#gallery {
-  scroll-margin-top: 160px;
-}
-
-@media (max-width: 768px) {
-  #about,
-  #classes,
-  #gallery {
-    scroll-margin-top: 120px;
-  }
-}
 
 @layer utilities {
   .text-balance {
@@ -79,7 +65,6 @@
 
 /* Base Styles */
 html {
-  scroll-behavior: smooth;
   @apply bg-aluna-alabaster text-aluna-charcoal antialiased;
 }
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { scrollTo } from '../../lib/lenis';
 
 export default function BackToTop() {
     const [isVisible, setIsVisible] = useState(false);
@@ -19,10 +20,7 @@ export default function BackToTop() {
     }, []);
 
     const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
+        scrollTo(0);
     };
 
     return (

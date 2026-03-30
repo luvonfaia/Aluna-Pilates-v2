@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
+import { scrollTo } from '../lib/lenis';
 
 const SECTION_IDS = ['home', 'about', 'classes', 'gallery'] as const;
 export type SectionId = (typeof SECTION_IDS)[number];
 
 export function scrollToSection(id: string) {
     if (id === 'home') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollTo(0);
         return;
     }
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (el) {
+        const offset = window.innerWidth < 768 ? -120 : -160;
+        scrollTo(el, { offset });
+    }
 }
 
 export function useActiveSection(): SectionId {
