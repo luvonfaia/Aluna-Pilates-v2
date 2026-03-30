@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { useTranslation } from 'react-i18next';
+import { useContactModal } from '../../context/ContactModalContext';
 
 const EASE_OUT = 'cubic-bezier(0.25, 1, 0.5, 1)';
 
@@ -22,7 +22,7 @@ function SplitLabel({
     return (
         <div className="relative flex items-center justify-center">
             {/* Invisible spacer preserves pill width */}
-            <span className={`invisible text-[12px] font-semibold tracking-[0.08em] select-none ${color}`}>
+            <span className={`invisible text-[10px] sm:text-[12px] font-semibold tracking-[0.08em] select-none ${color}`}>
                 {text}
             </span>
 
@@ -32,7 +32,7 @@ function SplitLabel({
                     <div key={`out-${i}`} className="overflow-hidden h-[1.3em] flex items-center">
                         <span
                             ref={el => { charsOutRef.current[i] = el; }}
-                            className={`inline-block text-[12px] font-semibold tracking-[0.08em] ${color}`}
+                            className={`inline-block text-[10px] sm:text-[12px] font-semibold tracking-[0.08em] ${color}`}
                         >
                             {char === ' ' ? '\u00A0' : char}
                         </span>
@@ -46,7 +46,7 @@ function SplitLabel({
                     <div key={`in-${i}`} className="overflow-hidden h-[1.3em] flex items-center">
                         <span
                             ref={el => { charsInRef.current[i] = el; }}
-                            className={`inline-block text-[12px] font-semibold tracking-[0.08em] ${color}`}
+                            className={`inline-block text-[10px] sm:text-[12px] font-semibold tracking-[0.08em] ${color}`}
                         >
                             {char === ' ' ? '\u00A0' : char}
                         </span>
@@ -69,18 +69,17 @@ function WhatsAppSVG({ className }: { className?: string }) {
     );
 }
 
-// ─── Multi-layer shadow ─────────────────────────────────────────────────────
+// ─── Subtle glass shadow ────────────────────────────────────────────────────
 const PILL_SHADOW =
-    '0 198px 55px 0 rgba(0,0,0,0.00),' +
-    '0 127px 51px 0 rgba(0,0,0,0.01),' +
-    '0  71px 43px 0 rgba(0,0,0,0.04),' +
-    '0  32px 32px 0 rgba(0,0,0,0.07),' +
-    '0   8px 17px 0 rgba(0,0,0,0.10)';
+    '0 4px 16px 0 rgba(0,0,0,0.06),' +
+    '0 1px 4px 0 rgba(0,0,0,0.04)';
 
 // ─── Main component ─────────────────────────────────────────────────────────
 export default function FloatingCTA() {
     const { t } = useTranslation();
+    const { openModal, isOpen: modalOpen } = useContactModal();
     const [onDark, setOnDark] = useState(true);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     // Contact — char refs
     const contactCharsOut = useRef<(HTMLSpanElement | null)[]>([]);
@@ -92,20 +91,80 @@ export default function FloatingCTA() {
     const waCharsIn   = useRef<(HTMLSpanElement | null)[]>([]);
 
     // ── Adaptive dark/light detection ──────────────────────────────────────
+    // Uses computed background-color luminance of the page behind the CTA.
+    // elementsFromPoint (plural) retrieves all layers including those under
+    // the fixed CTA (which would block elementFromPoint single-element lookup).
     useEffect(() => {
-        const selectors = ['section.h-screen', 'section.bg-aluna-charcoal', 'footer'];
-        const visible   = new Set<Element>();
+        const parseRGB = (str: string) => {
+            const m = str.match(/rgba?\(\s*([\d.]+)\s*[,\s]\s*([\d.]+)\s*[,\s]\s*([\d.]+)(?:\s*[,/]\s*([\d.]+))?\s*\)/);
+            if (!m) return null;
+            return { r: +m[1], g: +m[2], b: +m[3], a: m[4] !== undefined ? +m[4] : 1 };
+        };
 
-        const obs = new IntersectionObserver(
-            entries => {
-                entries.forEach(e => e.isIntersecting ? visible.add(e.target) : visible.delete(e.target));
-                setOnDark(visible.size > 0);
-            },
-            { threshold: 0.05 }
-        );
+        const getLuminance = (r: number, g: number, b: number) => {
+            const lin = (c: number) => { const s = c / 255; return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4); };
+            return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+        };
 
-        selectors.forEach(sel => document.querySelectorAll(sel).forEach(el => obs.observe(el)));
-        return () => obs.disconnect();
+        const blend = (R: number, G: number, B: number, r: number, g: number, b: number, a: number) => {
+            const alpha = Math.min(1, Math.max(0, a));
+            if (alpha < 0.05) return [R, G, B] as [number, number, number];
+            return [R * (1 - alpha) + r * alpha, G * (1 - alpha) + g * alpha, B * (1 - alpha) + b * alpha] as [number, number, number];
+        };
+
+        const check = () => {
+            const x = window.innerWidth / 2;
+            const y = window.innerHeight - 60;
+
+            // Get all stacked elements at this point (including those under the CTA)
+            const all = document.elementsFromPoint(x, y) as Element[];
+            // Skip the CTA container so we read the page behind it
+            const pageEls = all.filter(el => !el.closest('[data-floating-cta]'));
+
+            // Composite background color by blending non-transparent layers bottom-up
+            let R = 249, G = 248, B = 246; // aluna-alabaster as the page base
+            for (const el of [...pageEls].reverse()) {
+                const cs = window.getComputedStyle(el);
+
+                // 1. Solid background-color
+                const bg = cs.backgroundColor;
+                if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+                    const c = parseRGB(bg);
+                    if (c) [R, G, B] = blend(R, G, B, c.r, c.g, c.b, c.a);
+                }
+
+                // 2. Gradient background-image (e.g. hero dark overlays use bg-gradient-*)
+                // background-color returns transparent for gradients; read backgroundImage instead.
+                const bgImg = cs.backgroundImage;
+                if (bgImg && bgImg !== 'none' && bgImg.includes('gradient')) {
+                    // Parse rgba/rgb stops
+                    const rgbaRe = /rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)(?:[,/\s]+([\d.]+))?\s*\)/g;
+                    for (const m of bgImg.matchAll(rgbaRe)) {
+                        [R, G, B] = blend(R, G, B, +m[1], +m[2], +m[3], m[4] !== undefined ? +m[4] : 1);
+                    }
+                    // Parse oklab/oklch stops (Tailwind v4 serializes gradient stops as oklab)
+                    // Format: oklab(L a b / alpha) — L=0 is black, L=1 is white
+                    const oklabRe = /ok(?:lab|lch)\(\s*([\d.]+%?)[\s,]+[-\d.]+[\s,]+[-\d.]+(?:\s*\/\s*([\d.]+))?\s*\)/g;
+                    for (const m of bgImg.matchAll(oklabRe)) {
+                        const rawL = m[1].endsWith('%') ? parseFloat(m[1]) / 100 : parseFloat(m[1]);
+                        const a = m[2] !== undefined ? +m[2] : 1;
+                        // Approximate sRGB gray from oklab/oklch L (sufficient for dark/light heuristic)
+                        const gray = Math.round(Math.pow(Math.min(1, rawL), 2.2) * 255);
+                        [R, G, B] = blend(R, G, B, gray, gray, gray, a);
+                    }
+                }
+            }
+
+            setOnDark(getLuminance(R, G, B) < 0.35);
+        };
+
+        check();
+        window.addEventListener('scroll', check, { passive: true });
+        window.addEventListener('resize', check, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', check);
+            window.removeEventListener('resize', check);
+        };
     }, []);
 
     // ── Hide "in" chars on mount ────────────────────────────────────────────
@@ -175,35 +234,43 @@ export default function FloatingCTA() {
         );
     };
 
-    // ── Colors ─────────────────────────────────────────────────────────────
+    // ── Colors — frosted glass style (high-contrast for all sections) ────
     const outerClass = onDark
-        ? 'bg-white/15 backdrop-blur-md border border-white/20'
-        : 'bg-white/80 backdrop-blur-md border border-aluna-stone/15 shadow-xl shadow-black/10';
+        ? 'bg-white/15 backdrop-blur-xl border border-white/20'
+        : 'bg-aluna-charcoal/[0.06] backdrop-blur-xl border border-aluna-stone/20';
 
     const innerClass = onDark
-        ? 'bg-white text-aluna-charcoal'
-        : 'bg-aluna-charcoal text-aluna-alabaster';
+        ? 'bg-white/25 backdrop-blur-sm text-white border border-white/25'
+        : 'bg-white backdrop-blur-sm text-aluna-charcoal border border-aluna-stone/15';
 
-    const textColor = onDark ? 'text-aluna-charcoal' : 'text-aluna-alabaster';
-    const iconColor = onDark ? 'text-[#25D366]'      : 'text-aluna-gold';
+    const outerShadow = onDark
+        ? '0 8px 32px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06)'
+        : '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)';
+
+    const textColor = onDark ? 'text-white' : 'text-aluna-charcoal';
+    const iconColor = onDark ? 'text-[#25D366]' : 'text-[#25D366]';
 
     return (
         <motion.div
+            data-floating-cta
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[200] flex flex-col items-center"
+            animate={{
+                opacity: modalOpen ? 0 : 1,
+                y: modalOpen ? -200 : 0,
+            }}
+            transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
+            className="fixed bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-[200] flex flex-col items-center"
         >
             <div
-                className={`flex items-center gap-1.5 p-1.5 rounded-[60px] transition-all duration-500 ${outerClass}`}
-                style={{ boxShadow: onDark ? '0 8px 32px rgba(0,0,0,0.12)' : 'none' }}
+                className={`flex items-center gap-1 sm:gap-1.5 p-1 sm:p-1.5 rounded-[60px] transition-all duration-500 ${outerClass}`}
+                style={{ boxShadow: outerShadow }}
             >
                 {/* ── Contact pill ── */}
-                <Link
-                    to="/contact"
+                <button
+                    onClick={openModal}
                     onMouseEnter={onContactEnter}
-                    aria-label="Go to contact page"
-                    className={`relative h-10 px-6 rounded-full overflow-hidden flex items-center cursor-pointer transition-colors duration-500 ${innerClass}`}
+                    aria-label="Open contact form"
+                    className={`relative h-9 px-4 sm:h-10 sm:px-6 rounded-full overflow-hidden flex items-center cursor-pointer transition-colors duration-500 ${innerClass}`}
                     style={{ boxShadow: PILL_SHADOW }}
                 >
                     <SplitLabel
@@ -212,7 +279,7 @@ export default function FloatingCTA() {
                         charsInRef={contactCharsIn}
                         color={textColor}
                     />
-                </Link>
+                </button>
 
                 {/* ── WhatsApp pill ── */}
                 <a
@@ -221,7 +288,7 @@ export default function FloatingCTA() {
                     rel="noopener noreferrer"
                     onMouseEnter={onWaEnter}
                     aria-label="Contact us on WhatsApp"
-                    className={`relative h-10 px-5 rounded-full overflow-hidden flex items-center gap-2.5 cursor-pointer transition-colors duration-500 ${innerClass}`}
+                    className={`relative h-9 px-4 sm:h-10 sm:px-5 rounded-full overflow-hidden flex items-center gap-2 sm:gap-2.5 cursor-pointer transition-colors duration-500 ${innerClass}`}
                     style={{ boxShadow: PILL_SHADOW }}
                 >
                     {/* Single icon — elastic spring bounce, no ghost possible */}

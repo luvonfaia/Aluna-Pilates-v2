@@ -8,7 +8,7 @@ export default function LanguageSwitcher() {
     };
 
     return (
-        <div className="flex items-center space-x-2 text-xs uppercase tracking-widest font-medium">
+        <div className="flex items-center space-x-2.5 text-xs sm:text-[13px] uppercase tracking-widest font-medium">
             <button
                 onClick={() => changeLanguage('ro')}
                 className={`cursor-pointer transition-colors duration-300 ${i18n.language === 'ro' ? 'text-aluna-gold' : 'text-aluna-stone hover:text-aluna-charcoal'

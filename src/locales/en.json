@@ -171,5 +171,37 @@
     },
     "floating_cta": {
         "contact": "Contact Us"
+    },
+    "contact_modal": {
+        "form": {
+            "name_label": "Name",
+            "name_placeholder": "Your Name",
+            "email_label": "Email",
+            "email_placeholder": "your@email.com",
+            "phone_label": "Phone",
+            "phone_placeholder": "+40 700 123 456",
+            "class_label": "Which class interests you?",
+            "class_placeholder": "Select a class",
+            "privacy_label": "I agree to the ",
+            "privacy_link": "Privacy Policy",
+            "submit": "Send Inquiry",
+            "submitting": "Sending..."
+        },
+        "validation": {
+            "required": "This field is required",
+            "name_min": "Name must be at least 2 characters",
+            "email_invalid": "Please enter a valid email",
+            "phone_invalid": "Please enter a valid phone number"
+        },
+        "states": {
+            "success_title": "Thank You!",
+            "success_message": "We've received your inquiry and will be in touch within 24 hours.",
+            "error_title": "Oops!",
+            "error_message": "Something went wrong. Please try again."
+        },
+        "actions": {
+            "retry": "Try Again",
+            "close": "Close"
+        }
     }
 }

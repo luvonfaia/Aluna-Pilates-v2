@@ -171,5 +171,37 @@
     },
     "floating_cta": {
         "contact": "Contactează-ne"
+    },
+    "contact_modal": {
+        "form": {
+            "name_label": "Nume",
+            "name_placeholder": "Numele Tău",
+            "email_label": "Email",
+            "email_placeholder": "tău@email.com",
+            "phone_label": "Telefon",
+            "phone_placeholder": "+40 700 123 456",
+            "class_label": "Ce clasă te interesează?",
+            "class_placeholder": "Selectează o clasă",
+            "privacy_label": "Sunt de acord cu ",
+            "privacy_link": "Politica de Confidențialitate",
+            "submit": "Trimite Cererea",
+            "submitting": "Se trimite..."
+        },
+        "validation": {
+            "required": "Acest câmp este obligatoriu",
+            "name_min": "Numele trebuie să aibă cel puțin 2 caractere",
+            "email_invalid": "Te rog introduce un email valid",
+            "phone_invalid": "Te rog introduce un număr de telefon valid"
+        },
+        "states": {
+            "success_title": "Mulțumim!",
+            "success_message": "Am primit cererea ta și te vom contacta în decurs de 24 de ore.",
+            "error_title": "Oops!",
+            "error_message": "Ceva a mers greșit. Te rog încearcă din nou."
+        },
+        "actions": {
+            "retry": "Încearcă din Nou",
+            "close": "Închide"
+        }
     }
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { scrollTo } from '../../lib/lenis';
 
 export default function BackToTop() {
     const [isVisible, setIsVisible] = useState(false);
@@ -19,10 +20,7 @@ export default function BackToTop() {
     }, []);
 
     const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
+        scrollTo(0);
     };
 
     return (
@@ -33,12 +31,12 @@ export default function BackToTop() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.5 }}
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 z-40 p-3 bg-aluna-gold text-white rounded-full shadow-lg hover:bg-aluna-charcoal transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-aluna-gold focus:ring-offset-2"
+                    className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-40 p-2 sm:p-3 bg-aluna-gold text-white rounded-full shadow-lg hover:bg-aluna-charcoal transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-aluna-gold focus:ring-offset-2"
                     aria-label="Back to Top"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
+                        className="h-5 w-5 sm:h-6 sm:w-6"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"

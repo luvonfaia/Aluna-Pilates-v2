@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { scrollToSection } from '../../hooks/useActiveSection';
+import { useContactModal } from '../../context/ContactModalContext';
 
 export default function Footer() {
     const { t } = useTranslation();
+    const { openModal } = useContactModal();
     const currentYear = new Date().getFullYear();
 
     return (
@@ -11,13 +13,13 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                     {/* Brand */}
                     <div className="md:col-span-1">
-                        <Link to="/" className="block mb-8">
+                        <button onClick={() => scrollToSection('home')} className="block mb-8 cursor-pointer">
                             <img
                                 src="/logo.svg"
                                 alt="ALUNA Reformer Studio"
                                 className="h-28 md:h-40 w-auto object-contain brightness-[1.15] contrast-[0.9]"
                             />
-                        </Link>
+                        </button>
                         <p className="text-aluna-alabaster/50 font-light text-sm leading-relaxed mb-7">
                             {t('footer.tagline')}
                         </p>
@@ -52,15 +54,18 @@ export default function Footer() {
                         <h4 className="text-[10px] uppercase tracking-[0.3em] text-aluna-gold mb-7 font-medium">{t('footer.sections.studio')}</h4>
                         <ul className="space-y-4">
                             {[
-                                { name: t('footer.links.about'), path: '/about' },
-                                { name: t('footer.links.classes'), path: '/classes' },
-                                { name: t('footer.links.instructors'), path: '/about' },
-                                { name: t('footer.links.pricing'), path: '/classes' }
+                                { name: t('footer.links.about'), sectionId: 'about' },
+                                { name: t('footer.links.classes'), sectionId: 'classes' },
+                                { name: t('footer.links.instructors'), sectionId: 'about' },
+                                { name: t('footer.links.pricing'), sectionId: 'classes' }
                             ].map((item) => (
                                 <li key={item.name}>
-                                    <Link to={item.path} className="text-aluna-alabaster/50 hover:text-aluna-gold text-sm transition-colors duration-300 font-light">
+                                    <button
+                                        onClick={() => scrollToSection(item.sectionId)}
+                                        className="text-aluna-alabaster/50 hover:text-aluna-gold text-sm transition-colors duration-300 font-light cursor-pointer"
+                                    >
                                         {item.name}
-                                    </Link>
+                                    </button>
                                 </li>
                             ))}
                         </ul>
@@ -70,16 +75,23 @@ export default function Footer() {
                     <div>
                         <h4 className="text-[10px] uppercase tracking-[0.3em] text-aluna-gold mb-7 font-medium">{t('footer.sections.support')}</h4>
                         <ul className="space-y-4">
+                            <li>
+                                <button
+                                    onClick={openModal}
+                                    className="text-aluna-alabaster/50 hover:text-aluna-gold text-sm transition-colors duration-300 font-light cursor-pointer"
+                                >
+                                    {t('footer.links.contact')}
+                                </button>
+                            </li>
                             {[
-                                { name: t('footer.links.contact'), path: '/contact' },
-                                { name: t('footer.links.faq'), path: '#' },
-                                { name: t('footer.links.privacy'), path: '#' },
-                                { name: t('footer.links.terms'), path: '#' }
+                                { name: t('footer.links.faq'), href: '#' },
+                                { name: t('footer.links.privacy'), href: '#' },
+                                { name: t('footer.links.terms'), href: '#' }
                             ].map((item) => (
                                 <li key={item.name}>
-                                    <Link to={item.path} className="text-aluna-alabaster/50 hover:text-aluna-gold text-sm transition-colors duration-300 font-light">
+                                    <a href={item.href} className="text-aluna-alabaster/50 hover:text-aluna-gold text-sm transition-colors duration-300 font-light">
                                         {item.name}
-                                    </Link>
+                                    </a>
                                 </li>
                             ))}
                         </ul>
