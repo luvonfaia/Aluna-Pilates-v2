@@ -79,7 +79,6 @@ export default function FloatingCTA() {
     const { t } = useTranslation();
     const { openModal, isOpen: modalOpen } = useContactModal();
     const [onDark, setOnDark] = useState(true);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     // Contact — char refs
     const contactCharsOut = useRef<(HTMLSpanElement | null)[]>([]);
