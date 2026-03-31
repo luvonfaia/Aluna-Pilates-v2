@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Consolidated project
-aluna-site/
+# Local Claude Code files
+.claude/
+Screenshots/
