@@ -19,10 +19,11 @@ function SplitLabel({
     color: string;
 }) {
     const chars = text.split('');
+    const sizeClass = 'text-[9px] sm:text-[10px] lg:text-[12px]';
     return (
         <div className="relative flex items-center justify-center">
             {/* Invisible spacer preserves pill width */}
-            <span className={`invisible text-[10px] sm:text-[12px] font-semibold tracking-[0.08em] select-none ${color}`}>
+            <span className={`invisible ${sizeClass} font-semibold tracking-[0.08em] select-none ${color}`}>
                 {text}
             </span>
 
@@ -32,7 +33,7 @@ function SplitLabel({
                     <div key={`out-${i}`} className="overflow-hidden h-[1.3em] flex items-center">
                         <span
                             ref={el => { charsOutRef.current[i] = el; }}
-                            className={`inline-block text-[10px] sm:text-[12px] font-semibold tracking-[0.08em] ${color}`}
+                            className={`inline-block ${sizeClass} font-semibold tracking-[0.08em] ${color}`}
                         >
                             {char === ' ' ? '\u00A0' : char}
                         </span>
@@ -46,7 +47,7 @@ function SplitLabel({
                     <div key={`in-${i}`} className="overflow-hidden h-[1.3em] flex items-center">
                         <span
                             ref={el => { charsInRef.current[i] = el; }}
-                            className={`inline-block text-[10px] sm:text-[12px] font-semibold tracking-[0.08em] ${color}`}
+                            className={`inline-block ${sizeClass} font-semibold tracking-[0.08em] ${color}`}
                         >
                             {char === ' ' ? '\u00A0' : char}
                         </span>
@@ -60,8 +61,18 @@ function SplitLabel({
 // ─── Phone SVG ──────────────────────────────────────────────────────────────
 function PhoneSVG({ className }: { className?: string }) {
     return (
-        <svg className={`w-[14px] h-[14px] ${className ?? ''}`} viewBox="0 0 24 24" fill="currentColor">
+        <svg className={`w-[14px] h-[14px] sm:w-[14px] sm:h-[14px] ${className ?? ''}`} viewBox="0 0 24 24" fill="currentColor">
             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+        </svg>
+    );
+}
+
+// ─── Mail SVG (contact pill icon on mobile) ──────────────────────────────────
+function MailSVG({ className }: { className?: string }) {
+    return (
+        <svg className={`w-[15px] h-[15px] ${className ?? ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="M2 7l10 7 10-7" />
         </svg>
     );
 }
@@ -104,9 +115,6 @@ export default function FloatingCTA() {
     const waCharsIn   = useRef<(HTMLSpanElement | null)[]>([]);
 
     // ── Adaptive dark/light detection ──────────────────────────────────────
-    // Uses computed background-color luminance of the page behind the CTA.
-    // elementsFromPoint (plural) retrieves all layers including those under
-    // the fixed CTA (which would block elementFromPoint single-element lookup).
     useEffect(() => {
         const parseRGB = (str: string) => {
             const m = str.match(/rgba?\(\s*([\d.]+)\s*[,\s]\s*([\d.]+)\s*[,\s]\s*([\d.]+)(?:\s*[,/]\s*([\d.]+))?\s*\)/);
@@ -129,39 +137,29 @@ export default function FloatingCTA() {
             const x = window.innerWidth / 2;
             const y = window.innerHeight - 60;
 
-            // Get all stacked elements at this point (including those under the CTA)
             const all = document.elementsFromPoint(x, y) as Element[];
-            // Skip the CTA container so we read the page behind it
             const pageEls = all.filter(el => !el.closest('[data-floating-cta]'));
 
-            // Composite background color by blending non-transparent layers bottom-up
-            let R = 249, G = 248, B = 246; // aluna-alabaster as the page base
+            let R = 249, G = 248, B = 246;
             for (const el of [...pageEls].reverse()) {
                 const cs = window.getComputedStyle(el);
 
-                // 1. Solid background-color
                 const bg = cs.backgroundColor;
                 if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
                     const c = parseRGB(bg);
                     if (c) [R, G, B] = blend(R, G, B, c.r, c.g, c.b, c.a);
                 }
 
-                // 2. Gradient background-image (e.g. hero dark overlays use bg-gradient-*)
-                // background-color returns transparent for gradients; read backgroundImage instead.
                 const bgImg = cs.backgroundImage;
                 if (bgImg && bgImg !== 'none' && bgImg.includes('gradient')) {
-                    // Parse rgba/rgb stops
                     const rgbaRe = /rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)(?:[,/\s]+([\d.]+))?\s*\)/g;
                     for (const m of bgImg.matchAll(rgbaRe)) {
                         [R, G, B] = blend(R, G, B, +m[1], +m[2], +m[3], m[4] !== undefined ? +m[4] : 1);
                     }
-                    // Parse oklab/oklch stops (Tailwind v4 serializes gradient stops as oklab)
-                    // Format: oklab(L a b / alpha) — L=0 is black, L=1 is white
                     const oklabRe = /ok(?:lab|lch)\(\s*([\d.]+%?)[\s,]+[-\d.]+[\s,]+[-\d.]+(?:\s*\/\s*([\d.]+))?\s*\)/g;
                     for (const m of bgImg.matchAll(oklabRe)) {
                         const rawL = m[1].endsWith('%') ? parseFloat(m[1]) / 100 : parseFloat(m[1]);
                         const a = m[2] !== undefined ? +m[2] : 1;
-                        // Approximate sRGB gray from oklab/oklch L (sufficient for dark/light heuristic)
                         const gray = Math.round(Math.pow(Math.min(1, rawL), 2.2) * 255);
                         [R, G, B] = blend(R, G, B, gray, gray, gray, a);
                     }
@@ -245,10 +243,7 @@ export default function FloatingCTA() {
     };
 
     // ── Hover: WhatsApp ─────────────────────────────────────────────────────
-    // Icon: elastic spring bounce (scale + rotation) — no duplicate elements
-    // Text: same char-split as Contact
     const onWaEnter = () => {
-        // Spring bounce on the single icon
         gsap.killTweensOf(waIcon.current);
         gsap.fromTo(
             waIcon.current,
@@ -269,7 +264,6 @@ export default function FloatingCTA() {
             }
         );
 
-        // Char-split on "WhatsApp" label
         const wOut = waCharsOut.current.filter(Boolean) as HTMLSpanElement[];
         const wIn  = waCharsIn.current.filter(Boolean)  as HTMLSpanElement[];
 
@@ -286,7 +280,7 @@ export default function FloatingCTA() {
         );
     };
 
-    // ── Colors — frosted glass style (high-contrast for all sections) ────
+    // ── Colors ────────────────────────────────────────────────────────────
     const outerClass = onDark
         ? 'bg-white/15 backdrop-blur-xl border border-white/20'
         : 'bg-aluna-charcoal/[0.06] backdrop-blur-xl border border-aluna-stone/20';
@@ -302,6 +296,7 @@ export default function FloatingCTA() {
     const textColor  = onDark ? 'text-white' : 'text-aluna-charcoal';
     const iconColor  = onDark ? 'text-[#25D366]' : 'text-[#25D366]';
     const phoneColor = onDark ? 'text-aluna-gold' : 'text-aluna-gold';
+    const mailColor  = onDark ? 'text-white/80' : 'text-aluna-stone';
 
     return (
         <motion.div
@@ -323,18 +318,21 @@ export default function FloatingCTA() {
                     href="tel:+40786704688"
                     onMouseEnter={onPhoneEnter}
                     aria-label="Call us"
-                    className={`relative h-9 px-4 sm:h-10 sm:px-5 rounded-full overflow-hidden flex items-center gap-2 sm:gap-2.5 cursor-pointer transition-colors duration-500 ${innerClass}`}
+                    className={`relative h-9 sm:h-10 px-3 sm:px-4 lg:px-5 rounded-full overflow-hidden flex items-center justify-center gap-0 sm:gap-2 lg:gap-2.5 cursor-pointer transition-colors duration-500 ${innerClass}`}
                     style={{ boxShadow: PILL_SHADOW }}
                 >
                     <div ref={phoneIcon} className={`flex-shrink-0 flex items-center ${phoneColor}`}>
                         <PhoneSVG />
                     </div>
-                    <SplitLabel
-                        text="0786 704 688"
-                        charsOutRef={phoneCharsOut}
-                        charsInRef={phoneCharsIn}
-                        color={textColor}
-                    />
+                    {/* Text hidden below sm */}
+                    <div className="hidden sm:block">
+                        <SplitLabel
+                            text="0786 704 688"
+                            charsOutRef={phoneCharsOut}
+                            charsInRef={phoneCharsIn}
+                            color={textColor}
+                        />
+                    </div>
                 </a>
 
                 {/* ── Contact pill ── */}
@@ -342,15 +340,20 @@ export default function FloatingCTA() {
                     onClick={openModal}
                     onMouseEnter={onContactEnter}
                     aria-label="Open contact form"
-                    className={`relative h-9 px-4 sm:h-10 sm:px-6 rounded-full overflow-hidden flex items-center cursor-pointer transition-colors duration-500 ${innerClass}`}
+                    className={`relative h-9 sm:h-10 px-3 sm:px-5 lg:px-6 rounded-full overflow-hidden flex items-center justify-center cursor-pointer transition-colors duration-500 ${innerClass}`}
                     style={{ boxShadow: PILL_SHADOW }}
                 >
-                    <SplitLabel
-                        text={t('floating_cta.contact')}
-                        charsOutRef={contactCharsOut}
-                        charsInRef={contactCharsIn}
-                        color={textColor}
-                    />
+                    {/* Mail icon shown only on mobile */}
+                    <MailSVG className={`sm:hidden flex-shrink-0 ${mailColor}`} />
+                    {/* Text hidden below sm */}
+                    <div className="hidden sm:block">
+                        <SplitLabel
+                            text={t('floating_cta.contact')}
+                            charsOutRef={contactCharsOut}
+                            charsInRef={contactCharsIn}
+                            color={textColor}
+                        />
+                    </div>
                 </button>
 
                 {/* ── WhatsApp pill ── */}
@@ -360,21 +363,21 @@ export default function FloatingCTA() {
                     rel="noopener noreferrer"
                     onMouseEnter={onWaEnter}
                     aria-label="Contact us on WhatsApp"
-                    className={`relative h-9 px-4 sm:h-10 sm:px-5 rounded-full overflow-hidden flex items-center gap-2 sm:gap-2.5 cursor-pointer transition-colors duration-500 ${innerClass}`}
+                    className={`relative h-9 sm:h-10 px-3 sm:px-4 lg:px-5 rounded-full overflow-hidden flex items-center justify-center gap-0 sm:gap-2 lg:gap-2.5 cursor-pointer transition-colors duration-500 ${innerClass}`}
                     style={{ boxShadow: PILL_SHADOW }}
                 >
-                    {/* Single icon — elastic spring bounce, no ghost possible */}
                     <div ref={waIcon} className={`flex-shrink-0 flex items-center ${iconColor}`}>
                         <WhatsAppSVG />
                     </div>
-
-                    {/* Label with char-split animation */}
-                    <SplitLabel
-                        text="WhatsApp"
-                        charsOutRef={waCharsOut}
-                        charsInRef={waCharsIn}
-                        color={textColor}
-                    />
+                    {/* Text hidden below sm */}
+                    <div className="hidden sm:block">
+                        <SplitLabel
+                            text="WhatsApp"
+                            charsOutRef={waCharsOut}
+                            charsInRef={waCharsIn}
+                            color={textColor}
+                        />
+                    </div>
                 </a>
             </div>
         </motion.div>
