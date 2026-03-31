@@ -4,7 +4,9 @@
         "classes": "Clase",
         "gallery": "Galerie",
         "contact": "Contact",
-        "book": "Rezervă"
+        "book": "Rezervă",
+        "schedule": "Program",
+        "pricing": "Tarife"
     },
     "home": {
         "hero": {
@@ -168,6 +170,77 @@
         "title": "Pagina Nu a Fost Găsită",
         "desc": "Pagina pe care o căutați pare să fi dispărut. Haideți să vă ghidăm înapoi la centru.",
         "back": "Înapoi Acasă"
+    },
+    "schedule": {
+        "eyebrow": "Pilates Reformer Rafinat",
+        "headline": "Mișcare. Echilibru | Control.",
+        "schedule_title": "Program Clase",
+        "days": {
+            "mon_fri": "Luni – Vineri",
+            "saturday": "Sâmbătă",
+            "sunday": "Duminică"
+        },
+        "closed": "Studio Închis",
+        "cta": "Rezervă Locul",
+        "why_title": "De ce Aluna?",
+        "benefits": [
+            "Tonifiere și Aliniere a Corpului",
+            "Reducerea Stresului și Claritate Mentală",
+            "Atenție Personalizată din Partea Instructorilor",
+            "Atmosferă de Sanctuar Boutique"
+        ],
+        "promo": "Prima ședință este gratuită",
+        "quote": "Un spațiu conceput pentru ca sufletul să respire și corpul să-și găsească centrul."
+    },
+    "pricing": {
+        "eyebrow": "Ofertele Noastre",
+        "headline": "Listă de Prețuri",
+        "subtitle": "Îmbunătățește-ți practica în mediul nostru boutique serein. Alege din pachetele noastre curate, concepute pentru progres și recuperare.",
+        "individual": {
+            "title": "Ședințe Individuale",
+            "subtitle": "Studio Privat",
+            "items": [
+                { "name": "1 ședință", "detail": "", "original": "190 RON", "price": "171 RON" },
+                { "name": "6 ședințe", "detail": "", "original": "1110 RON", "price": "999 RON" },
+                { "name": "8 ședințe", "detail": "", "original": "1440 RON", "price": "1296 RON" },
+                { "name": "12 ședințe", "detail": "", "original": "2100 RON", "price": "1890 RON" },
+                { "name": "24 ședințe", "detail": "", "original": "4080 RON", "price": "3672 RON" },
+                { "name": "Lună Nelimitată", "detail": "", "original": "3000 RON", "price": "2700 RON" }
+            ]
+        },
+        "semi_private": {
+            "title": "Ședințe Semi-Private",
+            "subtitle": "Max. 3 Persoane",
+            "items": [
+                { "name": "1 ședință", "detail": "per persoană", "original": "170 RON", "price": "153 RON" },
+                { "name": "6 ședințe", "detail": "per persoană", "original": "990 RON", "price": "891 RON" },
+                { "name": "8 ședințe", "detail": "per persoană", "original": "1280 RON", "price": "1152 RON" },
+                { "name": "12 ședințe", "detail": "per persoană", "original": "1860 RON", "price": "1674 RON" },
+                { "name": "24 ședințe", "detail": "per persoană", "original": "3600 RON", "price": "3240 RON" },
+                { "name": "Lună Nelimitată", "detail": "per persoană", "original": "2750 RON", "price": "2475 RON" }
+            ]
+        },
+        "offer": {
+            "badge": "Ofertă Specială de Deschidere",
+            "title": "10% Reducere în Prima Lună",
+            "desc": "Prima ședință este gratuită. Alătură-te în luna deschiderii și bucură-te de 10% reducere la toate pachetele.",
+            "cta": "Revendică Oferta"
+        },
+        "method": {
+            "title": "Metoda Aluna",
+            "desc": "Abordarea noastră îmbină tehnicile clasice de reformer cu mișcarea funcțională contemporană, concentrându-se pe aliniere, respirație și efort conștient într-un sanctuar curat.",
+            "link": "Află mai multe despre noi"
+        }
+    },
+    "location": {
+        "eyebrow": "Găsește-ne",
+        "directions": "Obține Indicații"
+    },
+    "reviews": {
+        "eyebrow": "O Spun Clienții Noștri",
+        "headline": "Recenzii Google",
+        "count": "recenzii pe Google",
+        "view_all": "Vezi toate recenziile →"
     },
     "floating_cta": {
         "contact": "Trimite e-mail"

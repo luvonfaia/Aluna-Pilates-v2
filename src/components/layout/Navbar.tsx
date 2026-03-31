@@ -25,8 +25,8 @@ export default function Navbar() {
 
     const navLinks = [
         { name: t('nav.about'), sectionId: 'about' },
-        { name: t('nav.classes'), sectionId: 'classes' },
-        { name: t('nav.gallery'), sectionId: 'gallery' },
+        { name: t('nav.schedule'), sectionId: 'schedule' },
+        { name: t('nav.pricing'), sectionId: 'pricing' },
         { name: t('nav.contact'), sectionId: 'contact' },
     ];
 

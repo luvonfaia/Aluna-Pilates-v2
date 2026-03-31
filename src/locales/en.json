@@ -4,7 +4,9 @@
         "classes": "Classes",
         "gallery": "Gallery",
         "contact": "Contact",
-        "book": "Book Now"
+        "book": "Book Now",
+        "schedule": "Schedule",
+        "pricing": "Pricing"
     },
     "home": {
         "hero": {
@@ -168,6 +170,77 @@
         "title": "Page Not Found",
         "desc": "The page you are looking for seems to have drifted away. Let's guide you back to center.",
         "back": "Return Home"
+    },
+    "schedule": {
+        "eyebrow": "Refined Reformer Pilates",
+        "headline": "Movement. Balance | Control.",
+        "schedule_title": "Class Schedule",
+        "days": {
+            "mon_fri": "Mon – Fri",
+            "saturday": "Saturday",
+            "sunday": "Sunday"
+        },
+        "closed": "Studio Closed",
+        "cta": "Book Your Slot",
+        "why_title": "Why Aluna?",
+        "benefits": [
+            "Core Toning & Alignment",
+            "Stress Reduction & Mental Clarity",
+            "Personalized Instructor Attention",
+            "Boutique Sanctuary Atmosphere"
+        ],
+        "promo": "First session is free",
+        "quote": "A space designed for the soul to breathe and the body to find its center."
+    },
+    "pricing": {
+        "eyebrow": "Our Offerings",
+        "headline": "Pricing List",
+        "subtitle": "Elevate your practice in our serene boutique environment. Choose from our curated session packages designed for progress and restoration.",
+        "individual": {
+            "title": "Individual Sessions",
+            "subtitle": "Private Studio",
+            "items": [
+                { "name": "1 session", "detail": "", "original": "190 RON", "price": "171 RON" },
+                { "name": "6 sessions", "detail": "", "original": "1110 RON", "price": "999 RON" },
+                { "name": "8 sessions", "detail": "", "original": "1440 RON", "price": "1296 RON" },
+                { "name": "12 sessions", "detail": "", "original": "2100 RON", "price": "1890 RON" },
+                { "name": "24 sessions", "detail": "", "original": "4080 RON", "price": "3672 RON" },
+                { "name": "Unlimited Month", "detail": "", "original": "3000 RON", "price": "2700 RON" }
+            ]
+        },
+        "semi_private": {
+            "title": "Semi-Private Sessions",
+            "subtitle": "Max 3 People",
+            "items": [
+                { "name": "1 session", "detail": "per person", "original": "170 RON", "price": "153 RON" },
+                { "name": "6 sessions", "detail": "per person", "original": "990 RON", "price": "891 RON" },
+                { "name": "8 sessions", "detail": "per person", "original": "1280 RON", "price": "1152 RON" },
+                { "name": "12 sessions", "detail": "per person", "original": "1860 RON", "price": "1674 RON" },
+                { "name": "24 sessions", "detail": "per person", "original": "3600 RON", "price": "3240 RON" },
+                { "name": "Unlimited Month", "detail": "per person", "original": "2750 RON", "price": "2475 RON" }
+            ]
+        },
+        "offer": {
+            "badge": "Special Opening Offer",
+            "title": "10% Discount in Your First Month",
+            "desc": "First session is free. Join during our opening month and enjoy 10% off all packages.",
+            "cta": "Claim Offer"
+        },
+        "method": {
+            "title": "The Aluna Method",
+            "desc": "Our approach blends classical reformer techniques with contemporary functional movement, focusing on alignment, breath, and mindful exertion within a curated sanctuary.",
+            "link": "Learn more about us"
+        }
+    },
+    "location": {
+        "eyebrow": "Find Us",
+        "directions": "Get Directions"
+    },
+    "reviews": {
+        "eyebrow": "What Our Clients Say",
+        "headline": "Google Reviews",
+        "count": "reviews on Google",
+        "view_all": "View all reviews →"
     },
     "floating_cta": {
         "contact": "Email us"
