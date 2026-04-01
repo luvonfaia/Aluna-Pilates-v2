@@ -44,28 +44,28 @@ export default function Home() {
 
                 {/* Content */}
                 <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-                    <motion.p
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.3 }}
-                        className="text-white/60 uppercase tracking-[0.45em] text-[11px] mb-4 sm:mb-7 font-light"
-                    >
-                        Reformer Pilates Studio
-                    </motion.p>
                     <motion.h1
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
                         className="text-5xl sm:text-7xl md:text-[7rem] font-serif italic text-white mb-4 sm:mb-7 leading-[1.05] sm:leading-[0.95] tracking-tight"
                     >
-                        {t('home.hero.title').split('|').map((part, i, arr) => (
-                            <span key={i}>
-                                {part}
-                                {i < arr.length - 1 && (
-                                    <span className="text-aluna-gold not-italic"> |</span>
-                                )}
-                            </span>
-                        ))}
+                        {(() => {
+                            const parts = t('home.hero.title').split('|');
+                            if (parts.length === 2) {
+                                const words = parts[0].trimEnd().split(' ');
+                                const lastWord = words.pop();
+                                return (
+                                    <>
+                                        {words.join(' ')}{' '}
+                                        <span className="whitespace-nowrap">
+                                            {lastWord}<span className="text-aluna-gold not-italic"> |</span>{parts[1]}
+                                        </span>
+                                    </>
+                                );
+                            }
+                            return t('home.hero.title');
+                        })()}
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
