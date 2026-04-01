@@ -1,6 +1,11 @@
+import { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import spotlightImg from '../../assets/spotlight-studio.jpg';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface PricingItem {
     name: string;
@@ -9,23 +14,9 @@ interface PricingItem {
     price: string;
 }
 
-function PricingCard({
-    title,
-    items,
-    delay = 0,
-}: {
-    title: string;
-    items: PricingItem[];
-    delay?: number;
-}) {
+function PricingCard({ title, items }: { title: string; items: PricingItem[] }) {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-white shadow-md p-10 lg:p-12"
-        >
+        <div className="bg-white shadow-md p-10 lg:p-12 h-full">
             <div className="mb-8">
                 <h3 className="text-2xl md:text-3xl font-serif text-aluna-charcoal">{title}</h3>
             </div>
@@ -44,26 +35,119 @@ function PricingCard({
                     </div>
                 ))}
             </div>
-        </motion.div>
+        </div>
     );
 }
 
 export default function PricingSection() {
     const { t } = useTranslation();
 
-    const individualItems = t('pricing.individual.items', { returnObjects: true }) as PricingItem[];
+    const individualItems  = t('pricing.individual.items',   { returnObjects: true }) as PricingItem[];
     const semiPrivateItems = t('pricing.semi_private.items', { returnObjects: true }) as PricingItem[];
+
+    const headerRef      = useRef<HTMLDivElement>(null);
+    const individualRef  = useRef<HTMLDivElement>(null);
+    const semiRef        = useRef<HTMLDivElement>(null);
+    const offerRef       = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const isDesktop = window.innerWidth >= 1024; // lg breakpoint
+
+        const ctx = gsap.context(() => {
+            // Header — vertical rise
+            gsap.fromTo(headerRef.current,
+                { opacity: 0, y: 60 },
+                {
+                    opacity: 1, y: 0, ease: 'none',
+                    scrollTrigger: {
+                        trigger: headerRef.current,
+                        start: 'top 90%',
+                        end: 'top 40%',
+                        scrub: 1.5,
+                    },
+                }
+            );
+
+            if (isDesktop) {
+                // Desktop: Individual sweeps in from left
+                gsap.fromTo(individualRef.current,
+                    { opacity: 0, x: -320 },
+                    {
+                        opacity: 1, x: 0, ease: 'none',
+                        scrollTrigger: {
+                            trigger: individualRef.current,
+                            start: 'top 90%',
+                            end: 'top 25%',
+                            scrub: 1.5,
+                        },
+                    }
+                );
+
+                // Desktop: Semi-Private sweeps in from right
+                gsap.fromTo(semiRef.current,
+                    { opacity: 0, x: 320 },
+                    {
+                        opacity: 1, x: 0, ease: 'none',
+                        scrollTrigger: {
+                            trigger: semiRef.current,
+                            start: 'top 90%',
+                            end: 'top 25%',
+                            scrub: 1.8,
+                        },
+                    }
+                );
+            } else {
+                // Mobile: both rise vertically, staggered
+                gsap.fromTo(individualRef.current,
+                    { opacity: 0, y: 90 },
+                    {
+                        opacity: 1, y: 0, ease: 'none',
+                        scrollTrigger: {
+                            trigger: individualRef.current,
+                            start: 'top 92%',
+                            end: 'top 28%',
+                            scrub: 1.5,
+                        },
+                    }
+                );
+
+                gsap.fromTo(semiRef.current,
+                    { opacity: 0, y: 110 },
+                    {
+                        opacity: 1, y: 0, ease: 'none',
+                        scrollTrigger: {
+                            trigger: semiRef.current,
+                            start: 'top 95%',
+                            end: 'top 28%',
+                            scrub: 1.8,
+                        },
+                    }
+                );
+            }
+
+            // Offer block — vertical rise
+            gsap.fromTo(offerRef.current,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1, y: 0, ease: 'none',
+                    scrollTrigger: {
+                        trigger: offerRef.current,
+                        start: 'top 92%',
+                        end: 'top 55%',
+                        scrub: 1.5,
+                    },
+                }
+            );
+        });
+
+        return () => ctx.revert();
+    }, []);
 
     return (
         <section id="pricing" className="bg-aluna-alabaster py-28">
             {/* Header */}
             <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16">
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                >
+                <div ref={headerRef}>
                     <p className="label-eyebrow mb-5">{t('pricing.eyebrow')}</p>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-aluna-charcoal mb-6 leading-tight">
                         {t('pricing.headline')}
@@ -72,33 +156,33 @@ export default function PricingSection() {
                     <p className="text-aluna-stone font-light max-w-2xl leading-relaxed text-base md:text-lg">
                         {t('pricing.subtitle')}
                     </p>
-                </motion.div>
+                </div>
             </div>
 
-            {/* Pricing grid */}
+            {/* Pricing grid — overflow-hidden prevents horizontal scrollbar during sweep */}
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-                    <PricingCard
-                        title={t('pricing.individual.title')}
-                        items={individualItems}
-                        delay={0}
-                    />
-                    <PricingCard
-                        title={t('pricing.semi_private.title')}
-                        items={semiPrivateItems}
-                        delay={0.1}
-                    />
+                <div className="overflow-hidden">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+                        <div ref={individualRef}>
+                            <PricingCard
+                                title={t('pricing.individual.title')}
+                                items={individualItems}
+                            />
+                        </div>
+                        <div ref={semiRef}>
+                            <PricingCard
+                                title={t('pricing.semi_private.title')}
+                                items={semiPrivateItems}
+                            />
+                        </div>
+                    </div>
                 </div>
 
                 {/* Special Opening Offer block */}
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7, delay: 0.15 }}
+                <div
+                    ref={offerRef}
                     className="mt-8 bg-white border border-aluna-gold/20 shadow-lg p-10 lg:p-12 flex flex-col sm:flex-row items-center gap-10"
                 >
-                    {/* Left text */}
                     <div className="flex-1 text-center sm:text-left">
                         <span className="inline-block label-eyebrow bg-aluna-gold/10 px-4 py-1.5 mb-5">
                             {t('pricing.offer.badge')}
@@ -110,8 +194,6 @@ export default function PricingSection() {
                             {t('pricing.offer.desc')}
                         </p>
                     </div>
-
-                    {/* Right: spinning circle + button */}
                     <div className="flex flex-col items-center gap-6 shrink-0">
                         <div className="relative w-24 h-24 flex items-center justify-center">
                             <div className="absolute inset-0 border border-aluna-gold border-dashed rounded-full animate-[spin_20s_linear_infinite]" />
@@ -121,12 +203,11 @@ export default function PricingSection() {
                             </div>
                         </div>
                     </div>
-                </motion.div>
+                </div>
 
                 {/* The Aluna Method — editorial two-column */}
                 <div className="mt-16 lg:mt-24">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-end">
-                        {/* Image — 7/12 cols */}
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -140,8 +221,6 @@ export default function PricingSection() {
                                 className="w-full h-full object-cover"
                             />
                         </motion.div>
-
-                        {/* Text card — 5/12 cols, overlaps image on desktop */}
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}

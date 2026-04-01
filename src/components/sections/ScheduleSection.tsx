@@ -1,5 +1,9 @@
+import { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const CheckIcon = () => (
     <svg className="w-5 h-5 text-aluna-gold shrink-0 mt-0.5" viewBox="0 0 24 24" fill="currentColor">
@@ -17,16 +21,78 @@ export default function ScheduleSection() {
     const { t } = useTranslation();
     const benefits = t('schedule.benefits', { returnObjects: true }) as string[];
 
+    const headerRef    = useRef<HTMLDivElement>(null);
+    const leftCardRef  = useRef<HTMLDivElement>(null);
+    const rightCardRef = useRef<HTMLDivElement>(null);
+    const promoRef     = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Header — rises up
+            gsap.fromTo(headerRef.current,
+                { opacity: 0, y: 60 },
+                {
+                    opacity: 1, y: 0, ease: 'none',
+                    scrollTrigger: {
+                        trigger: headerRef.current,
+                        start: 'top 90%',
+                        end: 'top 40%',
+                        scrub: 1.5,
+                    },
+                }
+            );
+
+            // Left card — rises, starts slightly after header enters
+            gsap.fromTo(leftCardRef.current,
+                { opacity: 0, y: 90 },
+                {
+                    opacity: 1, y: 0, ease: 'none',
+                    scrollTrigger: {
+                        trigger: leftCardRef.current,
+                        start: 'top 92%',
+                        end: 'top 28%',
+                        scrub: 1.5,
+                    },
+                }
+            );
+
+            // Right card — rises slightly behind left
+            gsap.fromTo(rightCardRef.current,
+                { opacity: 0, y: 110 },
+                {
+                    opacity: 1, y: 0, ease: 'none',
+                    scrollTrigger: {
+                        trigger: rightCardRef.current,
+                        start: 'top 95%',
+                        end: 'top 28%',
+                        scrub: 1.8,
+                    },
+                }
+            );
+
+            // Promo banner
+            gsap.fromTo(promoRef.current,
+                { opacity: 0, y: 40 },
+                {
+                    opacity: 1, y: 0, ease: 'none',
+                    scrollTrigger: {
+                        trigger: promoRef.current,
+                        start: 'top 92%',
+                        end: 'top 60%',
+                        scrub: 1.5,
+                    },
+                }
+            );
+        });
+
+        return () => ctx.revert();
+    }, []);
+
     return (
         <section id="schedule" className="bg-aluna-cream py-28">
             {/* Header */}
             <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                >
+                <div ref={headerRef}>
                     <p className="label-eyebrow mb-5">{t('schedule.eyebrow')}</p>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-aluna-charcoal leading-tight">
                         {t('schedule.headline').split('|').map((part, i, arr) => (
@@ -38,20 +104,14 @@ export default function ScheduleSection() {
                             </span>
                         ))}
                     </h2>
-                </motion.div>
+                </div>
             </div>
 
             {/* Two-column cards */}
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8">
                     {/* LEFT card — Class Schedule */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                        className="bg-white shadow-lg p-10 lg:p-14 flex flex-col"
-                    >
+                    <div ref={leftCardRef} className="bg-white shadow-lg p-10 lg:p-14 flex flex-col">
                         <p className="label-eyebrow mb-6">{t('schedule.schedule_title')}</p>
                         <div className="flex-1 space-y-0 divide-y divide-aluna-cream">
                             {scheduleRows.map(({ dayKey, time, closed }) => (
@@ -67,16 +127,10 @@ export default function ScheduleSection() {
                                 </div>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* RIGHT card — Why Aluna? */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                        className="bg-aluna-alabaster p-10 lg:p-14 flex flex-col"
-                    >
+                    <div ref={rightCardRef} className="bg-aluna-alabaster p-10 lg:p-14 flex flex-col">
                         <p className="label-eyebrow mb-6">{t('schedule.why_title')}</p>
                         <ul className="space-y-6 flex-1">
                             {benefits.map((benefit, i) => (
@@ -88,23 +142,19 @@ export default function ScheduleSection() {
                                 </li>
                             ))}
                         </ul>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* Promo banner */}
-                <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
+                <div
+                    ref={promoRef}
                     className="bg-aluna-charcoal mt-0 md:mt-8 py-5 px-8 text-center"
                 >
                     <p className="text-aluna-gold font-serif text-lg italic tracking-wide">
                         ✦ {t('schedule.promo')} ✦
                     </p>
-                </motion.div>
+                </div>
             </div>
-
         </section>
     );
 }

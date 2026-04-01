@@ -9,7 +9,7 @@ export default function LocationSection() {
             {/* Map container */}
             <div className="relative w-full h-[420px] md:h-[500px]">
                 <iframe
-                    src="https://maps.google.com/maps?q=Aluna+Reformer+Studio,+Sos.+Colentina+nr.16,+Bucuresti&output=embed&hl=ro"
+                    src="https://maps.google.com/maps?ftid=0x40b1f9ee8a7f20c9:0x254c833071b20301&output=embed&hl=ro"
                     className="w-full h-full border-0 grayscale-[15%]"
                     loading="lazy"
                     title="Aluna Reformer Studio"
