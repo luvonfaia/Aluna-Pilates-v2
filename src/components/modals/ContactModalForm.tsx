@@ -45,9 +45,8 @@ export default function ContactModalForm() {
 
         // Map class ID to class title for email
         const classNames: Record<string, string> = {
-            reformer_flow: t('home.class_types.reformer_flow.title'),
-            sculpt_tone: t('home.class_types.sculpt_tone.title'),
-            stretch_restore: t('home.class_types.stretch_restore.title'),
+            individual: t('pricing.individual.title'),
+            semi_private: t('pricing.semi_private.title'),
         };
 
         const className = classNames[data.class] || data.class;

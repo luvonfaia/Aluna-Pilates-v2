@@ -20,9 +20,8 @@ export default function ClassSelectionDropdown({ control, isDisabled }: ClassSel
     const containerRef = useRef<HTMLDivElement>(null);
 
     const classOptions: ClassOption[] = [
-        { value: 'reformer_flow', label: t('home.class_types.reformer_flow.title') },
-        { value: 'sculpt_tone', label: t('home.class_types.sculpt_tone.title') },
-        { value: 'stretch_restore', label: t('home.class_types.stretch_restore.title') },
+        { value: 'individual', label: t('pricing.individual.title') },
+        { value: 'semi_private', label: t('pricing.semi_private.title') },
     ];
 
     // Close on outside click
