@@ -7,9 +7,11 @@ import Classes from './pages/Classes';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+import CookiePolicy from './pages/CookiePolicy';
 import BackToTop from './components/common/BackToTop';
 import FloatingCTA from './components/common/FloatingCTA';
 import ScrollToTop from './components/common/ScrollToTop';
+import CookieBanner from './components/common/CookieBanner';
 import { ContactModalProvider } from './context/ContactModalContext';
 import ContactModal from './components/modals/ContactModal';
 
@@ -27,6 +29,7 @@ function App() {
               <Route path="/classes" element={<Classes />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/cookie-policy" element={<CookiePolicy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
@@ -34,6 +37,7 @@ function App() {
           <FloatingCTA />
           <Footer />
           <ContactModal />
+          <CookieBanner />
         </div>
       </BrowserRouter>
     </ContactModalProvider>

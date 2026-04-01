@@ -247,6 +247,47 @@
     "floating_cta": {
         "contact": "Email us"
     },
+    "cookie_banner": {
+        "message": "We use cookies to remember your language preference and your consent choice. No tracking or advertising cookies are used.",
+        "accept": "Accept",
+        "decline": "Decline",
+        "learn_more": "Cookie Policy"
+    },
+    "cookie_policy": {
+        "title": "Cookie Policy",
+        "last_updated": "Last updated: April 2025",
+        "intro": "This Cookie Policy explains what cookies are, which cookies Aluna Reformer Studio uses on this website, and what your rights are regarding them.",
+        "what_title": "What Are Cookies?",
+        "what_body": "Cookies are small text files stored on your device (computer, tablet, or phone) when you visit a website. They allow the site to remember certain information about your visit, such as your preferred language.",
+        "we_use_title": "Cookies We Use",
+        "we_use_intro": "This website uses only essential cookies. We do not use advertising, analytics, or any third-party tracking cookies.",
+        "table": {
+            "name": "Name",
+            "purpose": "Purpose",
+            "type": "Type",
+            "duration": "Duration"
+        },
+        "cookies": [
+            {
+                "name": "i18next",
+                "purpose": "Remembers your preferred language (Romanian or English) so you don't have to re-select it on each visit.",
+                "type": "Essential",
+                "duration": "1 year"
+            },
+            {
+                "name": "cookie_consent",
+                "purpose": "Records whether you have accepted or declined this cookie notice, so we do not display it on every visit.",
+                "type": "Essential",
+                "duration": "1 year"
+            }
+        ],
+        "rights_title": "Your Rights",
+        "rights_body": "Under Romanian law and the EU General Data Protection Regulation (GDPR), you have the right to access, correct, or delete your personal data. You can withdraw your consent at any time by clearing your browser's local storage or by contacting us directly.",
+        "manage_title": "How to Manage Cookies",
+        "manage_body": "Most browsers allow you to refuse cookies or delete existing ones through their settings. Please note that disabling essential cookies may affect the functionality of this website (e.g., your language preference will not be saved).",
+        "contact_title": "Contact",
+        "contact_body": "If you have any questions about this Cookie Policy, please contact us at:"
+    },
     "contact_modal": {
         "form": {
             "name_label": "Name",

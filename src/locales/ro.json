@@ -247,6 +247,47 @@
     "floating_cta": {
         "contact": "Trimite e-mail"
     },
+    "cookie_banner": {
+        "message": "Folosim cookie-uri pentru a reține preferința de limbă și alegerea ta privind consimțământul. Nu utilizăm cookie-uri de urmărire sau publicitate.",
+        "accept": "Acceptă",
+        "decline": "Refuz",
+        "learn_more": "Politica de Cookie-uri"
+    },
+    "cookie_policy": {
+        "title": "Politica de Cookie-uri",
+        "last_updated": "Ultima actualizare: Aprilie 2025",
+        "intro": "Această Politică de Cookie-uri explică ce sunt cookie-urile, ce cookie-uri folosește Aluna Reformer Studio pe acest site și care sunt drepturile tale în legătură cu acestea.",
+        "what_title": "Ce Sunt Cookie-urile?",
+        "what_body": "Cookie-urile sunt fișiere text mici stocate pe dispozitivul tău (calculator, tabletă sau telefon) atunci când vizitezi un site web. Ele permit site-ului să rețină anumite informații despre vizita ta, cum ar fi limba preferată.",
+        "we_use_title": "Cookie-urile pe Care le Folosim",
+        "we_use_intro": "Acest site folosește exclusiv cookie-uri esențiale. Nu utilizăm cookie-uri de publicitate, analiză sau urmărire de la terți.",
+        "table": {
+            "name": "Denumire",
+            "purpose": "Scop",
+            "type": "Tip",
+            "duration": "Durată"
+        },
+        "cookies": [
+            {
+                "name": "i18next",
+                "purpose": "Reține limba preferată (română sau engleză) pentru ca aceasta să nu fie selectată din nou la fiecare vizită.",
+                "type": "Esențial",
+                "duration": "1 an"
+            },
+            {
+                "name": "cookie_consent",
+                "purpose": "Înregistrează dacă ai acceptat sau refuzat această notificare privind cookie-urile, pentru a nu o afișa la fiecare vizită.",
+                "type": "Esențial",
+                "duration": "1 an"
+            }
+        ],
+        "rights_title": "Drepturile Tale",
+        "rights_body": "În conformitate cu legislația română și cu Regulamentul General privind Protecția Datelor (GDPR), ai dreptul de a accesa, corecta sau șterge datele tale cu caracter personal. Îți poți retrage consimțământul oricând prin ștergerea datelor locale din browser sau contactându-ne direct.",
+        "manage_title": "Cum să Gestionezi Cookie-urile",
+        "manage_body": "Majoritatea browserelor îți permit să refuzi cookie-urile sau să le ștergi pe cele existente prin setările lor. Te rugăm să reții că dezactivarea cookie-urilor esențiale poate afecta funcționalitatea acestui site (de exemplu, preferința de limbă nu va fi salvată).",
+        "contact_title": "Contact",
+        "contact_body": "Dacă ai întrebări despre această Politică de Cookie-uri, ne poți contacta la:"
+    },
     "contact_modal": {
         "form": {
             "name_label": "Nume",

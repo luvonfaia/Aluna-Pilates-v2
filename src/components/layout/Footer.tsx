@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { scrollToSection } from '../../hooks/useActiveSection';
 import { useContactModal } from '../../context/ContactModalContext';
 
@@ -67,10 +68,16 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom border */}
-                <div className="border-t border-aluna-charcoal/10 pt-6 text-center">
+                <div className="border-t border-aluna-charcoal/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
                     <p className="text-aluna-stone/50 text-[10px] uppercase tracking-[0.3em] font-light">
                         {t('footer.rights')}
                     </p>
+                    <Link
+                        to="/cookie-policy"
+                        className="text-aluna-stone/50 hover:text-aluna-gold text-[10px] uppercase tracking-[0.3em] font-light transition-colors duration-200"
+                    >
+                        {t('cookie_policy.title')}
+                    </Link>
                 </div>
             </div>
         </footer>
