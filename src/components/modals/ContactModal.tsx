@@ -78,7 +78,7 @@ export default function ContactModal() {
                                 exit={{ scale: 0, rotate: 180 }}
                                 transition={{ duration: 0.6, delay: 0.3, ease: EASE_OUT }}
                                 onClick={closeModal}
-                                className="w-11 h-11 mb-3 rounded-full bg-white/90 backdrop-blur-sm border border-aluna-stone/15 shadow-lg flex items-center justify-center text-aluna-stone hover:text-aluna-charcoal hover:border-aluna-gold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-aluna-gold flex-shrink-0"
+                                className="w-11 h-11 mb-3 rounded-full bg-white/90 backdrop-blur-sm border border-aluna-stone/15 shadow-lg flex items-center justify-center text-aluna-stone hover:text-aluna-charcoal hover:border-aluna-gold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-aluna-gold flex-shrink-0 cursor-pointer"
                                 aria-label="Close contact form"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

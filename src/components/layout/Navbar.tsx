@@ -114,14 +114,6 @@ export default function Navbar() {
                                     </button>
                                 ))}
                                 <LanguageSwitcher />
-                                <button
-                                    onClick={openModal}
-                                    className={`btn-primary text-[10px] py-2.5 transition-all duration-300 cursor-pointer ${
-                                        !scrolled ? 'btn-primary-light' : 'btn-primary'
-                                    }`}
-                                >
-                                    {t('nav.book')}
-                                </button>
                             </div>
 
                             {/* Mobile Hamburger */}
@@ -192,17 +184,6 @@ export default function Navbar() {
                                     variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
                                 >
                                     <LanguageSwitcher />
-                                </motion.div>
-                                <motion.div
-                                    variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
-                                    className="mt-4"
-                                >
-                                    <button
-                                        onClick={() => { openModal(); setIsOpen(false); }}
-                                        className="btn-primary px-12 py-4 cursor-pointer"
-                                    >
-                                        {t('nav.book')}
-                                    </button>
                                 </motion.div>
                             </motion.nav>
                         </motion.div>

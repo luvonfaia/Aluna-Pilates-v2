@@ -136,7 +136,7 @@ export default function ReviewsSection() {
                     <button
                         onClick={goPrev}
                         aria-label="Previous review"
-                        className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 hidden sm:flex w-10 h-10 items-center justify-center bg-white shadow-md text-aluna-charcoal hover:bg-aluna-cream transition-colors duration-200"
+                        className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 hidden sm:flex w-10 h-10 items-center justify-center bg-white shadow-md text-aluna-charcoal hover:bg-aluna-cream transition-colors duration-200 cursor-pointer"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
@@ -147,7 +147,7 @@ export default function ReviewsSection() {
                     <button
                         onClick={goNext}
                         aria-label="Next review"
-                        className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 hidden sm:flex w-10 h-10 items-center justify-center bg-white shadow-md text-aluna-charcoal hover:bg-aluna-cream transition-colors duration-200"
+                        className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 hidden sm:flex w-10 h-10 items-center justify-center bg-white shadow-md text-aluna-charcoal hover:bg-aluna-cream transition-colors duration-200 cursor-pointer"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
@@ -197,7 +197,7 @@ export default function ReviewsSection() {
                     <button
                         onClick={goPrev}
                         aria-label="Previous review"
-                        className="w-10 h-10 flex items-center justify-center bg-white shadow-sm text-aluna-charcoal hover:bg-aluna-cream transition-colors duration-200"
+                        className="w-10 h-10 flex items-center justify-center bg-white shadow-sm text-aluna-charcoal hover:bg-aluna-cream transition-colors duration-200 cursor-pointer"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
@@ -206,7 +206,7 @@ export default function ReviewsSection() {
                     <button
                         onClick={goNext}
                         aria-label="Next review"
-                        className="w-10 h-10 flex items-center justify-center bg-white shadow-sm text-aluna-charcoal hover:bg-aluna-cream transition-colors duration-200"
+                        className="w-10 h-10 flex items-center justify-center bg-white shadow-sm text-aluna-charcoal hover:bg-aluna-cream transition-colors duration-200 cursor-pointer"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
@@ -221,7 +221,7 @@ export default function ReviewsSection() {
                             key={i}
                             onClick={() => goTo(i)}
                             aria-label={`Go to review ${i + 1}`}
-                            className={`transition-all duration-300 rounded-full ${
+                            className={`transition-all duration-300 rounded-full cursor-pointer ${
                                 i === currentIndex
                                     ? 'w-4 h-1.5 bg-aluna-gold'
                                     : 'w-1.5 h-1.5 bg-aluna-stone/30 hover:bg-aluna-stone/60'

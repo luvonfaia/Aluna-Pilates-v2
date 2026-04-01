@@ -53,7 +53,7 @@ export default function ClassSelectionDropdown({ control, isDisabled }: ClassSel
                         onClick={() => setIsOpen(!isOpen)}
                         disabled={isDisabled}
                         whileTap={{ scale: 0.98 }}
-                        className={`w-full px-4 py-3 bg-white rounded-xl text-left transition-all duration-300 flex justify-between items-center disabled:opacity-50 disabled:cursor-not-allowed ${
+                        className={`w-full px-4 py-3 bg-white rounded-xl text-left transition-all duration-300 flex justify-between items-center disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer ${
                             isOpen
                                 ? 'border-aluna-gold ring-1 ring-aluna-gold/30 shadow-md border'
                                 : error
@@ -105,7 +105,7 @@ export default function ClassSelectionDropdown({ control, isDisabled }: ClassSel
                                                     trackClassSelection(option.label);
                                                     setIsOpen(false);
                                                 }}
-                                                className={`w-full text-left px-3.5 py-2.5 rounded-lg flex items-center justify-between transition-all duration-200 ${
+                                                className={`w-full text-left px-3.5 py-2.5 rounded-lg flex items-center justify-between transition-all duration-200 cursor-pointer ${
                                                     isSelected
                                                         ? 'bg-aluna-gold/10 text-aluna-charcoal'
                                                         : 'text-aluna-charcoal/80 hover:bg-aluna-cream/60'

@@ -112,7 +112,7 @@ export default function ImageLightbox({
                                 exit={{ opacity: 0, scale: 0.8 }}
                                 transition={{ delay: 0.3, duration: 0.3 }}
                                 onClick={onClose}
-                                className="mb-3 z-[60] w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-colors duration-200"
+                                className="mb-3 z-[60] w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-colors duration-200 cursor-pointer"
                                 aria-label="Close lightbox"
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -153,7 +153,7 @@ export default function ImageLightbox({
                                     exit={{ opacity: 0 }}
                                     transition={{ delay: 0.3, duration: 0.3 }}
                                     onClick={goPrev}
-                                    className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-[60] w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-colors duration-200 pointer-events-auto"
+                                    className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-[60] w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-colors duration-200 pointer-events-auto cursor-pointer"
                                     aria-label="Previous image"
                                 >
                                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,7 +167,7 @@ export default function ImageLightbox({
                                     exit={{ opacity: 0 }}
                                     transition={{ delay: 0.3, duration: 0.3 }}
                                     onClick={goNext}
-                                    className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-[60] w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-colors duration-200 pointer-events-auto"
+                                    className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-[60] w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-colors duration-200 pointer-events-auto cursor-pointer"
                                     aria-label="Next image"
                                 >
                                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

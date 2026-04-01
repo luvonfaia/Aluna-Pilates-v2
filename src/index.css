@@ -27,22 +27,22 @@
 
   /* Primary button — dark on light backgrounds */
   .btn-primary {
-    @apply px-8 py-3 bg-aluna-charcoal text-white rounded-full hover:bg-aluna-gold hover:text-white transition-all duration-300 uppercase tracking-widest text-xs shadow-sm hover:shadow-md inline-block;
+    @apply px-8 py-3 bg-aluna-charcoal text-white rounded-full hover:bg-aluna-gold hover:text-white transition-all duration-300 uppercase tracking-widest text-xs shadow-sm hover:shadow-md inline-block cursor-pointer;
   }
 
   /* Primary button — white on dark/video backgrounds */
   .btn-primary-light {
-    @apply px-8 py-3 bg-white text-aluna-charcoal rounded-full hover:bg-aluna-gold hover:text-white transition-all duration-300 uppercase tracking-widest text-xs shadow-sm hover:shadow-md inline-block;
+    @apply px-8 py-3 bg-white text-aluna-charcoal rounded-full hover:bg-aluna-gold hover:text-white transition-all duration-300 uppercase tracking-widest text-xs shadow-sm hover:shadow-md inline-block cursor-pointer;
   }
 
   /* Ghost button — transparent with white border on dark/video backgrounds */
   .btn-ghost {
-    @apply px-8 py-3 border border-white/50 text-white hover:bg-white/10 hover:border-white/80 transition-all duration-300 uppercase tracking-widest text-xs rounded-full inline-block;
+    @apply px-8 py-3 border border-white/50 text-white hover:bg-white/10 hover:border-white/80 transition-all duration-300 uppercase tracking-widest text-xs rounded-full inline-block cursor-pointer;
   }
 
   /* Secondary outlined button */
   .btn-secondary {
-    @apply px-8 py-3 border border-aluna-charcoal text-aluna-charcoal hover:bg-aluna-charcoal hover:text-white transition-all duration-300 uppercase tracking-widest text-xs rounded-full inline-block;
+    @apply px-8 py-3 border border-aluna-charcoal text-aluna-charcoal hover:bg-aluna-charcoal hover:text-white transition-all duration-300 uppercase tracking-widest text-xs rounded-full inline-block cursor-pointer;
   }
 
   /* Section label — small uppercase eyebrow text */

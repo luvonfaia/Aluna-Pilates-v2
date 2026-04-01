@@ -182,7 +182,7 @@ export default function ContactModalForm() {
                 whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 type="submit"
                 disabled={isSubmitting || !agreePrivacy}
-                className="w-full py-3 mt-6 bg-aluna-charcoal text-aluna-alabaster rounded font-semibold hover:bg-aluna-gold hover:text-aluna-charcoal transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-aluna-gold focus:ring-offset-2"
+                className="w-full py-3 mt-6 bg-aluna-charcoal text-aluna-alabaster rounded font-semibold hover:bg-aluna-gold hover:text-aluna-charcoal transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus:outline-none focus:ring-2 focus:ring-aluna-gold focus:ring-offset-2"
             >
                 {isSubmitting ? t('contact_modal.form.submitting') : t('contact_modal.form.submit')}
             </motion.button>
