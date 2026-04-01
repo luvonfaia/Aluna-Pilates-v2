@@ -7,8 +7,7 @@ export default function Contact() {
     const { t } = useTranslation();
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = (data: any) => {
-        console.log(data);
+    const onSubmit = (_data: any) => {
         // EmailJS integration would go here
         alert(t('contact.form.success'));
     };
@@ -64,6 +63,7 @@ export default function Contact() {
                                         allowFullScreen
                                         loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade"
+                                        sandbox="allow-scripts allow-same-origin allow-popups allow-presentation"
                                         title="ALUNA Reformer Studio Location"
                                     ></iframe>
                                 </div>
@@ -92,7 +92,7 @@ export default function Contact() {
                                     <div>
                                         <label className="block text-xs uppercase tracking-widest text-aluna-stone mb-2">{t('contact.form.email')}</label>
                                         <input
-                                            {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+                                            {...register("email", { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })}
                                             className="w-full bg-white border-none p-4 text-aluna-charcoal focus:ring-1 focus:ring-aluna-gold transition-all"
                                             placeholder={t('contact.form.placeholder_email')}
                                         />

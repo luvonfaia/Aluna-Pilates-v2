@@ -14,6 +14,8 @@ export default function LocationSection() {
                     loading="lazy"
                     title="Aluna Reformer Studio"
                     allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-presentation"
                 />
 
                 {/* Desktop overlay card — hidden on mobile */}

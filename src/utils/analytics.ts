@@ -3,133 +3,26 @@
  * Integrates with Google Analytics 4 (gtag)
  */
 
-export interface ContactFormEvent {
-    event_name: string;
-    event_value?: number;
-    form_state?: 'idle' | 'loading' | 'success' | 'error';
-    selected_class?: string;
-    email_domain?: string;
-    timestamp: string;
+function gtag(event: string, params: Record<string, unknown>) {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', event, { timestamp: new Date().toISOString(), ...params });
+    }
 }
 
-/**
- * Track contact modal opening
- */
-export const trackModalOpen = () => {
-    const event: ContactFormEvent = {
-        event_name: 'contact_modal_opened',
-        timestamp: new Date().toISOString(),
-    };
+export const trackModalOpen = () =>
+    gtag('contact_modal_opened', {});
 
-    // Google Analytics 4
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'contact_modal_opened', {
-            timestamp: event.timestamp,
-        });
-    }
+export const trackFormSubmit = (selectedClass?: string) =>
+    gtag('contact_form_submitted', { selected_class: selectedClass });
 
-    // Console log for debugging (remove in production)
-    console.log('[Analytics]', event);
-};
+export const trackFormSuccess = (selectedClass?: string) =>
+    gtag('contact_form_success', { value: 1, selected_class: selectedClass });
 
-/**
- * Track contact form submission attempt
- */
-export const trackFormSubmit = (selectedClass?: string) => {
-    const event: ContactFormEvent = {
-        event_name: 'contact_form_submitted',
-        selected_class: selectedClass,
-        timestamp: new Date().toISOString(),
-    };
+export const trackFormError = (errorMessage?: string) =>
+    gtag('contact_form_error', { error_message: errorMessage });
 
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'contact_form_submitted', {
-            selected_class: selectedClass,
-            timestamp: event.timestamp,
-        });
-    }
+export const trackModalClose = (submissionState?: 'idle' | 'loading' | 'success' | 'error') =>
+    gtag('contact_modal_closed', { form_state: submissionState });
 
-    console.log('[Analytics]', event);
-};
-
-/**
- * Track successful form submission
- */
-export const trackFormSuccess = (selectedClass?: string) => {
-    const event: ContactFormEvent = {
-        event_name: 'contact_form_success',
-        form_state: 'success',
-        selected_class: selectedClass,
-        event_value: 1,
-        timestamp: new Date().toISOString(),
-    };
-
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'contact_form_success', {
-            value: 1,
-            selected_class: selectedClass,
-            timestamp: event.timestamp,
-        });
-    }
-
-    console.log('[Analytics]', event);
-};
-
-/**
- * Track form submission error
- */
-export const trackFormError = (errorMessage?: string) => {
-    const event: ContactFormEvent = {
-        event_name: 'contact_form_error',
-        form_state: 'error',
-        timestamp: new Date().toISOString(),
-    };
-
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'contact_form_error', {
-            error_message: errorMessage,
-            timestamp: event.timestamp,
-        });
-    }
-
-    console.log('[Analytics]', event);
-};
-
-/**
- * Track modal closure
- */
-export const trackModalClose = (submissionState?: 'idle' | 'loading' | 'success' | 'error') => {
-    const event: ContactFormEvent = {
-        event_name: 'contact_modal_closed',
-        form_state: submissionState,
-        timestamp: new Date().toISOString(),
-    };
-
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'contact_modal_closed', {
-            form_state: submissionState,
-            timestamp: event.timestamp,
-        });
-    }
-
-    console.log('[Analytics]', event);
-};
-
-/**
- * Track class selection
- */
-export const trackClassSelection = (className: string) => {
-    const event: ContactFormEvent = {
-        event_name: 'class_selected',
-        selected_class: className,
-        timestamp: new Date().toISOString(),
-    };
-
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'class_selected', {
-            class_name: className,
-        });
-    }
-
-    console.log('[Analytics]', event);
-};
+export const trackClassSelection = (className: string) =>
+    gtag('class_selected', { class_name: className });

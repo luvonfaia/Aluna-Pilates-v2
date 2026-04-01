@@ -9,6 +9,7 @@ import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import CookiePolicy from './pages/CookiePolicy';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import BackToTop from './components/common/BackToTop';
 import FloatingCTA from './components/common/FloatingCTA';
 import ScrollToTop from './components/common/ScrollToTop';
@@ -35,6 +36,7 @@ function App() {
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/cookie-policy" element={<CookiePolicy />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
