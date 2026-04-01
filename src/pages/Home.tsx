@@ -9,7 +9,6 @@ import ReviewsSection from '../components/sections/ReviewsSection';
 import LocationSection from '../components/sections/LocationSection';
 
 // Lazy-load Three.js components so the vendor chunk loads async after first paint
-const HeroParticles   = lazy(() => import('../components/canvas/HeroParticles'));
 const PhilosophyTorus = lazy(() => import('../components/canvas/PhilosophyTorus'));
 
 export default function Home() {
@@ -26,11 +25,6 @@ export default function Home() {
         <div id="home" className="overflow-hidden">
             {/* Hero Section – Full-screen video background */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
-                {/* Gold particle field — lazy-loaded WebGL canvas, z-2, pointer-events none */}
-                <Suspense fallback={null}>
-                    <HeroParticles />
-                </Suspense>
-
                 {/* Video */}
                 <video
                     ref={videoRef}
