@@ -146,16 +146,13 @@ export default function PricingSection() {
     return (
         <section id="pricing" className="bg-aluna-alabaster py-28">
             {/* Header */}
-            <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16">
+            <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-8">
                 <div ref={headerRef}>
                     <p className="label-eyebrow mb-5">{t('pricing.eyebrow')}</p>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-aluna-charcoal mb-6 leading-tight">
                         {t('pricing.headline')}
                     </h2>
                     <div className="w-16 h-px bg-aluna-gold mb-8" />
-                    <p className="text-aluna-stone font-light max-w-2xl leading-relaxed text-base md:text-lg">
-                        {t('pricing.subtitle')}
-                    </p>
                 </div>
             </div>
 
