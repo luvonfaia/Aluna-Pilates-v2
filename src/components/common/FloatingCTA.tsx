@@ -95,10 +95,24 @@ const PILL_SHADOW =
     '0 1px 4px 0 rgba(0,0,0,0.04)';
 
 // ─── Main component ─────────────────────────────────────────────────────────
-export default function FloatingCTA() {
+export default function FloatingCTA({ cookieBannerVisible = false }: { cookieBannerVisible?: boolean }) {
     const { t } = useTranslation();
     const { openModal, isOpen: modalOpen } = useContactModal();
     const [onDark, setOnDark] = useState(true);
+    const [bottomPx, setBottomPx] = useState(16);
+
+    useEffect(() => {
+        function update() {
+            const sm = window.innerWidth >= 640;
+            const base = sm ? 32 : 16;
+            // Banner is ~130px tall on mobile, ~68px on sm+; add 8px gap
+            const extra = cookieBannerVisible ? (sm ? 76 : 138) : 0;
+            setBottomPx(base + extra);
+        }
+        update();
+        window.addEventListener('resize', update, { passive: true });
+        return () => window.removeEventListener('resize', update);
+    }, [cookieBannerVisible]);
 
     // Phone — single icon ref + char refs for label
     const phoneIcon     = useRef<HTMLDivElement>(null);
@@ -311,9 +325,14 @@ export default function FloatingCTA() {
             animate={{
                 opacity: modalOpen ? 0 : 1,
                 y: modalOpen ? -200 : 0,
+                bottom: bottomPx,
             }}
-            transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
-            className="fixed bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-[200] flex flex-col items-center"
+            transition={{
+                opacity: { duration: 1, ease: [0.25, 1, 0.5, 1] },
+                y: { duration: 1, ease: [0.25, 1, 0.5, 1] },
+                bottom: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+            }}
+            className="fixed left-1/2 -translate-x-1/2 z-[201] flex flex-col items-center"
         >
             <div
                 className={`flex items-center gap-1.5 p-1.5 rounded-[60px] transition-all duration-500 ${outerClass}`}

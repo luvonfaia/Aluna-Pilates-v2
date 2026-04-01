@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
@@ -16,6 +17,10 @@ import { ContactModalProvider } from './context/ContactModalContext';
 import ContactModal from './components/modals/ContactModal';
 
 function App() {
+  const [cookieBannerVisible, setCookieBannerVisible] = useState(
+    () => !localStorage.getItem('cookie_consent')
+  );
+
   return (
     <ContactModalProvider>
       <BrowserRouter>
@@ -34,10 +39,10 @@ function App() {
             </Routes>
           </main>
           <BackToTop />
-          <FloatingCTA />
+          <FloatingCTA cookieBannerVisible={cookieBannerVisible} />
           <Footer />
           <ContactModal />
-          <CookieBanner />
+          <CookieBanner onDismiss={() => setCookieBannerVisible(false)} />
         </div>
       </BrowserRouter>
     </ContactModalProvider>

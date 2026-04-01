@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const STORAGE_KEY = 'cookie_consent';
 
-export default function CookieBanner() {
+export default function CookieBanner({ onDismiss }: { onDismiss: () => void }) {
     const { t } = useTranslation();
     const [visible, setVisible] = useState(false);
 
@@ -17,11 +17,13 @@ export default function CookieBanner() {
     function handleAccept() {
         localStorage.setItem(STORAGE_KEY, 'accepted');
         setVisible(false);
+        onDismiss();
     }
 
     function handleDecline() {
         localStorage.setItem(STORAGE_KEY, 'declined');
         setVisible(false);
+        onDismiss();
     }
 
     return (
