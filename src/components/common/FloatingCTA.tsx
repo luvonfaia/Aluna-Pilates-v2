@@ -358,7 +358,7 @@ export default function FloatingCTA() {
 
                 {/* ── WhatsApp pill ── */}
                 <a
-                    href="https://wa.me/40700000000"
+                    href="https://wa.me/40786704688"
                     target="_blank"
                     rel="noopener noreferrer"
                     onMouseEnter={onWaEnter}
