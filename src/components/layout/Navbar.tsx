@@ -148,28 +148,42 @@ export default function Navbar() {
                 <AnimatePresence>
                     {isOpen && (
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.25 }}
-                            className="fixed inset-0 bg-aluna-alabaster z-[150] flex flex-col items-center justify-center"
+                            className="fixed inset-0 z-[150]"
+                            initial="closed"
+                            animate="open"
+                            exit="closed"
                         >
-                            <motion.nav
-                                initial="hidden"
-                                animate="visible"
+                            {/* Background — scaleY curtain wipe from top */}
+                            <motion.div
                                 variants={{
-                                    hidden: {},
-                                    visible: { transition: { staggerChildren: 0.07 } }
+                                    closed: {
+                                        scaleY: 0,
+                                        transition: { duration: 0.45, ease: [0.62, 0.05, 0.01, 0.99], delay: 0.18 },
+                                    },
+                                    open: {
+                                        scaleY: 1,
+                                        transition: { duration: 0.55, ease: [0.62, 0.05, 0.01, 0.99] },
+                                    },
                                 }}
-                                className="flex flex-col items-center gap-8"
+                                style={{ transformOrigin: 'top' }}
+                                className="absolute inset-0 bg-aluna-alabaster"
+                            />
+
+                            {/* Content — staggered after background starts dropping */}
+                            <motion.nav
+                                variants={{
+                                    closed: { transition: { staggerChildren: 0.04, staggerDirection: -1 } },
+                                    open:   { transition: { staggerChildren: 0.08, delayChildren: 0.3 } },
+                                }}
+                                className="relative flex flex-col items-center justify-center h-full gap-8"
                                 aria-label="Mobile navigation"
                             >
                                 {navLinks.map((item) => (
                                     <motion.div
                                         key={item.sectionId}
                                         variants={{
-                                            hidden: { opacity: 0, y: 16 },
-                                            visible: { opacity: 1, y: 0, transition: { ease: [0.22, 1, 0.36, 1] } }
+                                            closed: { opacity: 0, y: -12, transition: { duration: 0.15, ease: 'easeIn' } },
+                                            open:   { opacity: 1, y: 0,   transition: { ease: [0.22, 1, 0.36, 1], duration: 0.5 } },
                                         }}
                                     >
                                         <button
@@ -181,7 +195,10 @@ export default function Navbar() {
                                     </motion.div>
                                 ))}
                                 <motion.div
-                                    variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+                                    variants={{
+                                        closed: { opacity: 0, y: -12, transition: { duration: 0.15, ease: 'easeIn' } },
+                                        open:   { opacity: 1, y: 0,   transition: { ease: [0.22, 1, 0.36, 1], duration: 0.5 } },
+                                    }}
                                 >
                                     <LanguageSwitcher />
                                 </motion.div>
