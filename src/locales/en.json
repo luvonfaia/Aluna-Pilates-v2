@@ -286,7 +286,9 @@
         "manage_title": "How to Manage Cookies",
         "manage_body": "Most browsers allow you to refuse cookies or delete existing ones through their settings. Please note that disabling essential cookies may affect the functionality of this website (e.g., your language preference will not be saved).",
         "contact_title": "Contact",
-        "contact_body": "If you have any questions about this Cookie Policy, please contact us at:"
+        "contact_body": "If you have any questions about this Cookie Policy, please contact us at:",
+        "back": "← Back",
+        "return_home": "Return to Homepage"
     },
     "contact_modal": {
         "form": {

@@ -286,7 +286,9 @@
         "manage_title": "Cum să Gestionezi Cookie-urile",
         "manage_body": "Majoritatea browserelor îți permit să refuzi cookie-urile sau să le ștergi pe cele existente prin setările lor. Te rugăm să reții că dezactivarea cookie-urilor esențiale poate afecta funcționalitatea acestui site (de exemplu, preferința de limbă nu va fi salvată).",
         "contact_title": "Contact",
-        "contact_body": "Dacă ai întrebări despre această Politică de Cookie-uri, ne poți contacta la:"
+        "contact_body": "Dacă ai întrebări despre această Politică de Cookie-uri, ne poți contacta la:",
+        "back": "← Înapoi",
+        "return_home": "Înapoi la pagina principală"
     },
     "contact_modal": {
         "form": {

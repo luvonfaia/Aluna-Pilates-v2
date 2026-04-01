@@ -16,7 +16,7 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-aluna-cream pt-16 pb-8">
+        <footer className="bg-aluna-cream pt-16 pb-20 sm:pb-8">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 {/* Three-column layout */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10 md:gap-6 pb-12">

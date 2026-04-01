@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PageTransition from '../components/common/PageTransition';
 
@@ -22,6 +23,14 @@ export default function CookiePolicy() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                     >
+                        {/* Back link */}
+                        <Link
+                            to="/"
+                            className="inline-flex items-center text-aluna-stone/60 hover:text-aluna-gold text-[11px] uppercase tracking-[0.25em] font-medium transition-colors duration-200 mb-10"
+                        >
+                            {t('cookie_policy.back')}
+                        </Link>
+
                         {/* Header */}
                         <div className="mb-12">
                             <div className="w-px h-12 bg-gradient-to-b from-transparent to-aluna-gold/50 mx-auto mb-8" />
@@ -129,6 +138,13 @@ export default function CookiePolicy() {
                         </div>
 
                         <div className="w-px h-12 bg-gradient-to-b from-aluna-gold/30 to-transparent mx-auto mt-16" />
+
+                        {/* Return home button */}
+                        <div className="flex justify-center mt-10">
+                            <Link to="/" className="btn-primary">
+                                {t('cookie_policy.return_home')}
+                            </Link>
+                        </div>
                     </motion.div>
                 </div>
             </div>
