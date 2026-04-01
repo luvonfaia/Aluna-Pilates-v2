@@ -21,13 +21,14 @@ function App() {
   const [cookieBannerVisible, setCookieBannerVisible] = useState(
     () => !localStorage.getItem('cookie_consent')
   );
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <ContactModalProvider>
       <BrowserRouter>
         <ScrollToTop />
         <div className="min-h-screen bg-aluna-alabaster font-sans text-aluna-charcoal flex flex-col">
-          <Navbar />
+          <Navbar onMenuToggle={setMenuOpen} />
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -41,7 +42,7 @@ function App() {
             </Routes>
           </main>
           <BackToTop />
-          <FloatingCTA cookieBannerVisible={cookieBannerVisible} />
+          <FloatingCTA cookieBannerVisible={cookieBannerVisible} menuOpen={menuOpen} />
           <Footer />
           <ContactModal />
           <CookieBanner onDismiss={() => setCookieBannerVisible(false)} />

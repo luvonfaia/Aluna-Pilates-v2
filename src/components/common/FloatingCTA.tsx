@@ -95,7 +95,7 @@ const PILL_SHADOW =
     '0 1px 4px 0 rgba(0,0,0,0.04)';
 
 // ─── Main component ─────────────────────────────────────────────────────────
-export default function FloatingCTA({ cookieBannerVisible = false }: { cookieBannerVisible?: boolean }) {
+export default function FloatingCTA({ cookieBannerVisible = false, menuOpen = false }: { cookieBannerVisible?: boolean; menuOpen?: boolean }) {
     const { t } = useTranslation();
     const { openModal, isOpen: modalOpen } = useContactModal();
     const [onDark, setOnDark] = useState(true);
@@ -323,8 +323,8 @@ export default function FloatingCTA({ cookieBannerVisible = false }: { cookieBan
             data-floating-cta
             initial={{ opacity: 0, y: 20 }}
             animate={{
-                opacity: modalOpen ? 0 : 1,
-                y: modalOpen ? -200 : 0,
+                opacity: (modalOpen || menuOpen) ? 0 : 1,
+                y: (modalOpen || menuOpen) ? -200 : 0,
                 bottom: bottomPx,
             }}
             transition={{

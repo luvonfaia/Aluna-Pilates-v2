@@ -5,9 +5,14 @@ import LanguageSwitcher from '../common/LanguageSwitcher';
 import { useActiveSection, scrollToSection } from '../../hooks/useActiveSection';
 import { useContactModal } from '../../context/ContactModalContext';
 
-export default function Navbar() {
+export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean) => void }) {
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = (val: boolean) => {
+        setIsOpen(val);
+        onMenuToggle?.(val);
+    };
     const [scrolled, setScrolled] = useState(false);
     const activeSection = useActiveSection();
     const { openModal } = useContactModal();
@@ -36,7 +41,7 @@ export default function Navbar() {
         } else {
             scrollToSection(sectionId);
         }
-        setIsOpen(false);
+        toggleMenu(false);
     };
 
     const isActive = (sectionId: string) => sectionId !== 'contact' && activeSection === sectionId;
@@ -118,7 +123,7 @@ export default function Navbar() {
 
                             {/* Mobile Hamburger */}
                             <button
-                                onClick={() => setIsOpen(!isOpen)}
+                                onClick={() => toggleMenu(!isOpen)}
                                 className="md:hidden z-[160] relative w-10 h-10 flex items-center justify-center focus:outline-none"
                                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
                             >
