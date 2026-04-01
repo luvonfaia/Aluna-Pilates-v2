@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import spotlightImg from '../../assets/spotlight-studio.jpg';
-import { scrollToSection } from '../../hooks/useActiveSection';
 
 interface PricingItem {
     name: string;
@@ -157,13 +156,6 @@ export default function PricingSection() {
                             <p className="text-aluna-stone font-light leading-relaxed text-sm md:text-base mb-10">
                                 {t('pricing.method.desc')}
                             </p>
-                            <button
-                                onClick={() => scrollToSection('about')}
-                                className="inline-flex items-center gap-2 text-aluna-charcoal hover:text-aluna-gold text-[10px] uppercase tracking-[0.3em] border-b border-aluna-charcoal/30 hover:border-aluna-gold pb-1 transition-all duration-300 cursor-pointer font-medium"
-                            >
-                                {t('pricing.method.link')}
-                                <span>→</span>
-                            </button>
                         </motion.div>
                     </div>
                 </div>

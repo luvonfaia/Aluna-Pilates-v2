@@ -1,7 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import spotlightImg from '../../assets/spotlight-studio.jpg';
-import { useContactModal } from '../../context/ContactModalContext';
 
 const CheckIcon = () => (
     <svg className="w-5 h-5 text-aluna-gold shrink-0 mt-0.5" viewBox="0 0 24 24" fill="currentColor">
@@ -17,8 +15,6 @@ const scheduleRows = [
 
 export default function ScheduleSection() {
     const { t } = useTranslation();
-    const { openModal } = useContactModal();
-
     const benefits = t('schedule.benefits', { returnObjects: true }) as string[];
 
     return (
@@ -71,14 +67,6 @@ export default function ScheduleSection() {
                                 </div>
                             ))}
                         </div>
-                        <div className="mt-10">
-                            <button
-                                onClick={openModal}
-                                className="btn-primary cursor-pointer"
-                            >
-                                {t('schedule.cta')}
-                            </button>
-                        </div>
                     </motion.div>
 
                     {/* RIGHT card — Why Aluna? */}
@@ -117,37 +105,6 @@ export default function ScheduleSection() {
                 </motion.div>
             </div>
 
-            {/* Studio image with quote overlay */}
-            <div className="relative mt-16 w-full overflow-hidden">
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                    className="w-full h-[400px] md:h-[530px]"
-                >
-                    <img
-                        src={spotlightImg}
-                        alt="Aluna Pilates Studio"
-                        className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-aluna-charcoal/40 via-transparent to-transparent" />
-                </motion.div>
-
-                {/* Quote overlay — hidden on mobile */}
-                <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    className="hidden md:block absolute bottom-10 left-10 lg:left-16 max-w-sm bg-white/95 backdrop-blur-sm p-8 shadow-xl"
-                >
-                    <div className="w-8 h-px bg-aluna-gold mb-5" />
-                    <p className="font-serif italic text-aluna-charcoal text-lg leading-relaxed">
-                        &ldquo;{t('schedule.quote')}&rdquo;
-                    </p>
-                </motion.div>
-            </div>
         </section>
     );
 }

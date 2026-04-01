@@ -81,6 +81,38 @@ export default function Home() {
                             {t('nav.pricing')}
                         </button>
                     </motion.div>
+
+                    {/* Opening offer badge — centered, below CTA buttons */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 1.3 }}
+                        className="flex justify-center mt-8"
+                    >
+                        <button
+                            onClick={() => scrollToSection('pricing')}
+                            className="relative overflow-hidden flex items-center gap-3 bg-white/8 backdrop-blur-sm border border-white/15 px-5 py-3 hover:bg-white/15 transition-colors duration-300 cursor-pointer"
+                        >
+                            {/* Gold shimmer sweep */}
+                            <span
+                                className="pointer-events-none absolute inset-0 w-1/3"
+                                style={{
+                                    background: 'linear-gradient(90deg, transparent, rgba(201,182,138,0.35), transparent)',
+                                    animation: 'goldShimmer 2.4s ease-in-out infinite',
+                                    animationDelay: '1.5s',
+                                }}
+                            />
+                            <div className="flex flex-col items-center leading-none relative z-10">
+                                <span className="font-serif text-2xl text-white leading-none">10%</span>
+                                <span className="text-[8px] uppercase tracking-widest text-aluna-gold mt-0.5">OFF</span>
+                            </div>
+                            <div className="w-px h-8 bg-white/20 relative z-10" />
+                            <div className="text-left relative z-10">
+                                <p className="text-white text-[10px] uppercase tracking-[0.2em] font-medium">{t('home.hero.offer_badge_title')}</p>
+                                <p className="text-white/55 text-[9px] tracking-wide mt-0.5">{t('home.hero.offer_badge_sub')}</p>
+                            </div>
+                        </button>
+                    </motion.div>
                 </div>
             </section>
 

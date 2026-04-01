@@ -172,9 +172,15 @@ export default function FloatingCTA() {
         check();
         window.addEventListener('scroll', check, { passive: true });
         window.addEventListener('resize', check, { passive: true });
+
+        // Re-check when mobile menu opens/closes (Navbar toggles body overflow)
+        const observer = new MutationObserver(check);
+        observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+
         return () => {
             window.removeEventListener('scroll', check);
             window.removeEventListener('resize', check);
+            observer.disconnect();
         };
     }, []);
 

@@ -12,7 +12,9 @@
         "hero": {
             "title": "Rafinează-ți Mișcarea",
             "subtitle": "Experimentează arta Pilates într-un sanctuar al calmului.",
-            "cta": "Explorează Clasele"
+            "cta": "Explorează Clasele",
+            "offer_badge_title": "Ofertă de deschidere",
+            "offer_badge_sub": "10% reducere în prima lună"
         },
         "philosophy": {
             "title": "Filozofie",
