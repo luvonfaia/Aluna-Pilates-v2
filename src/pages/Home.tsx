@@ -56,9 +56,16 @@ export default function Home() {
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                        className="text-4xl sm:text-7xl md:text-[7rem] font-serif text-white mb-4 sm:mb-7 leading-[0.95] sm:leading-[0.92] tracking-tight"
+                        className="text-5xl sm:text-7xl md:text-[7rem] font-serif italic text-white mb-4 sm:mb-7 leading-[1.05] sm:leading-[0.95] tracking-tight"
                     >
-                        {t('home.hero.title')}
+                        {t('home.hero.title').split('|').map((part, i, arr) => (
+                            <span key={i}>
+                                {part}
+                                {i < arr.length - 1 && (
+                                    <span className="text-aluna-gold not-italic"> |</span>
+                                )}
+                            </span>
+                        ))}
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
