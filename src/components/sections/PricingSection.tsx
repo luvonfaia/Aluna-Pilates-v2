@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import spotlightImg from '../../assets/spotlight-studio.jpg';
-import { useContactModal } from '../../context/ContactModalContext';
 import { scrollToSection } from '../../hooks/useActiveSection';
 
 interface PricingItem {
@@ -52,7 +51,6 @@ function PricingCard({
 
 export default function PricingSection() {
     const { t } = useTranslation();
-    const { openModal } = useContactModal();
 
     const individualItems = t('pricing.individual.items', { returnObjects: true }) as PricingItem[];
     const semiPrivateItems = t('pricing.semi_private.items', { returnObjects: true }) as PricingItem[];
@@ -123,12 +121,6 @@ export default function PricingSection() {
                                 <p className="text-[9px] uppercase tracking-widest text-aluna-stone mt-0.5">OFF</p>
                             </div>
                         </div>
-                        <button
-                            onClick={openModal}
-                            className="btn-primary cursor-pointer whitespace-nowrap"
-                        >
-                            {t('pricing.offer.cta')}
-                        </button>
                     </div>
                 </motion.div>
 
