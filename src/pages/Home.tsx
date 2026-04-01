@@ -48,7 +48,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.3 }}
-                        className="text-white/60 uppercase tracking-[0.45em] text-[11px] mb-7 font-light"
+                        className="text-white/60 uppercase tracking-[0.45em] text-[11px] mb-4 sm:mb-7 font-light"
                     >
                         Reformer Pilates Studio
                     </motion.p>
@@ -56,7 +56,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                        className="text-5xl sm:text-7xl md:text-[7rem] font-serif text-white mb-7 leading-[0.92] tracking-tight"
+                        className="text-4xl sm:text-7xl md:text-[7rem] font-serif text-white mb-4 sm:mb-7 leading-[0.95] sm:leading-[0.92] tracking-tight"
                     >
                         {t('home.hero.title')}
                     </motion.h1>
@@ -64,7 +64,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.75 }}
-                        className="text-lg md:text-xl text-white/75 font-light mb-12 max-w-lg mx-auto leading-relaxed tracking-wide"
+                        className="text-base md:text-xl text-white/75 font-light mb-8 sm:mb-12 max-w-lg mx-auto leading-relaxed tracking-wide"
                     >
                         {t('home.hero.subtitle')}
                     </motion.p>
