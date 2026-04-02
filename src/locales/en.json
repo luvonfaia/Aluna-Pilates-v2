@@ -304,6 +304,7 @@
         "return_home": "Return to Homepage"
     },
     "contact_modal": {
+        "or_send_message": "or send a message",
         "form": {
             "name_label": "Name",
             "name_placeholder": "Your Name",

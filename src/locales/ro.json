@@ -304,6 +304,7 @@
         "return_home": "Înapoi la pagina principală"
     },
     "contact_modal": {
+        "or_send_message": "sau trimite un mesaj",
         "form": {
             "name_label": "Nume",
             "name_placeholder": "Numele Tău",
