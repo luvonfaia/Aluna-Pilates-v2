@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+
 const EASE_OUT: [number, number, number, number] = [0.25, 1, 0.5, 1];
 const REVEAL = {
     hidden: { opacity: 0, y: 16 },
@@ -21,15 +22,22 @@ export default function About() {
     }, [navigate]);
 
     return (
+        // Outer container — clicking the dark backdrop closes the modal
         <div
             id="about"
             className="fixed inset-0 z-[170] bg-black/40 flex flex-col items-center justify-center px-4 pt-20 pb-4"
+            onClick={() => navigate('/')}
         >
-            {/* Backdrop — click to close */}
-            <div className="absolute inset-0" onClick={() => navigate('/')} aria-hidden="true" />
-
-            <div className="relative w-full sm:w-[min(520px,calc(100%-64px))] flex flex-col items-center">
-
+            {/*
+             * Inner wrapper — stopPropagation prevents the backdrop click from
+             * firing when the user taps anywhere on the panel or close button.
+             * This also removes the `absolute inset-0` div that was intercepting
+             * all touch events on iOS and blocking scroll.
+             */}
+            <div
+                className="relative w-full sm:w-[min(520px,calc(100%-64px))] flex flex-col items-center"
+                onClick={e => e.stopPropagation()}
+            >
                 {/* Close button — identical to ContactModal */}
                 <motion.button
                     initial={{ scale: 0, rotate: -180 }}
@@ -45,7 +53,7 @@ export default function About() {
                     </svg>
                 </motion.button>
 
-                {/* Panel — slides up from below */}
+                {/* Panel */}
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -54,11 +62,15 @@ export default function About() {
                 >
                     <div
                         ref={scrollRef}
-                        className="bg-aluna-cream rounded-3xl sm:rounded-[24px] shadow-2xl overflow-y-auto w-full"
+                        className="bg-aluna-cream rounded-3xl sm:rounded-[24px] shadow-2xl w-full"
                         style={{
                             maxHeight: 'calc(100vh - 152px)',
+                            overflowY: 'scroll',
+                            // Explicit touch-action tells iOS Safari this element
+                            // handles vertical scroll — prevents the browser from
+                            // routing pan gestures elsewhere
+                            touchAction: 'pan-y',
                             WebkitOverflowScrolling: 'touch',
-                            overscrollBehavior: 'contain',
                         }}
                     >
                         {/* Header */}
@@ -73,7 +85,6 @@ export default function About() {
                         {/* Body */}
                         <div className="px-8 pt-6 pb-8 sm:px-10 sm:pb-10 space-y-5">
 
-                            {/* Four narrative paragraphs */}
                             {([1, 2, 3, 4] as const).map((n, i) => (
                                 <motion.p
                                     key={n}
@@ -88,7 +99,7 @@ export default function About() {
                                 </motion.p>
                             ))}
 
-                            {/* Gold pull-quote — closing statement */}
+                            {/* Gold pull-quote */}
                             <motion.div
                                 variants={REVEAL}
                                 initial="hidden"
@@ -109,7 +120,6 @@ export default function About() {
                                     </div>
                                 </div>
                             </motion.div>
-
 
                         </div>
                     </div>
