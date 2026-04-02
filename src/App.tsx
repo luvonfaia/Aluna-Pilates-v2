@@ -1,9 +1,8 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
-import About from './pages/About';
 import Classes from './pages/Classes';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
@@ -22,16 +21,13 @@ function AppLayout() {
     () => !localStorage.getItem('cookie_consent')
   );
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
-  const isAbout = location.pathname === '/about';
-
   return (
     <div className="min-h-screen bg-aluna-alabaster font-sans text-aluna-charcoal flex flex-col">
       <Navbar onMenuToggle={setMenuOpen} />
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<Navigate to="/" replace />} />
           <Route path="/classes" element={<Classes />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
@@ -43,7 +39,7 @@ function AppLayout() {
       <BackToTop />
       <FloatingCTA
         cookieBannerVisible={cookieBannerVisible}
-        menuOpen={menuOpen || isAbout}
+        menuOpen={menuOpen}
       />
       <Footer />
       <ContactModal />

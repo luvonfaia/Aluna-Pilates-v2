@@ -163,6 +163,79 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* About */}
+            <section id="about" className="py-24 md:py-32 bg-aluna-cream">
+                <div className="max-w-7xl mx-auto px-6 lg:px-12">
+
+                    {/* Header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="mb-14 md:mb-20"
+                    >
+                        <p className="label-eyebrow mb-4">{t('about.split.eyebrow')}</p>
+                        <h2 className="text-4xl md:text-6xl font-serif text-aluna-charcoal leading-tight max-w-xl">
+                            {t('about.hero.title')}
+                        </h2>
+                        <div className="w-12 h-px bg-aluna-gold mt-8" />
+                    </motion.div>
+
+                    {/* Two-column body */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-6">
+                        <div className="space-y-6">
+                            {([1, 2] as const).map((n, i) => (
+                                <motion.p
+                                    key={n}
+                                    initial={{ opacity: 0, y: 18 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                    className={`leading-relaxed font-light text-aluna-stone ${n === 1 ? 'text-lg' : 'text-base'}`}
+                                >
+                                    {t(`about.split.p${n}`)}
+                                </motion.p>
+                            ))}
+                        </div>
+                        <div className="space-y-6">
+                            {([3, 4] as const).map((n, i) => (
+                                <motion.p
+                                    key={n}
+                                    initial={{ opacity: 0, y: 18 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                    className="text-base leading-relaxed font-light text-aluna-stone"
+                                >
+                                    {t(`about.split.p${n}`)}
+                                </motion.p>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Closing pull-quote */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 18 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                        className="mt-14 pt-10 border-t border-aluna-stone/15 flex items-start gap-4"
+                    >
+                        <div className="w-0.5 self-stretch flex-shrink-0 bg-aluna-gold/60 rounded-full" />
+                        <div>
+                            <p className="text-xl md:text-2xl font-serif text-aluna-charcoal italic leading-snug mb-1">
+                                {t('about.closing.line1')}
+                            </p>
+                            <p className="text-xl md:text-2xl font-serif text-aluna-gold italic leading-snug">
+                                {t('about.closing.line2')}
+                            </p>
+                        </div>
+                    </motion.div>
+
+                </div>
+            </section>
+
             <ScheduleSection />
             <PricingSection />
             <ReviewsSection />

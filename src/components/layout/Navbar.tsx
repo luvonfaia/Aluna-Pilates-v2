@@ -41,8 +41,6 @@ export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean
     const handleNavClick = (sectionId: string) => {
         if (sectionId === 'contact') {
             openModal();
-        } else if (sectionId === 'about') {
-            navigate('/about');
         } else if (location.pathname !== '/') {
             navigate('/');
             setTimeout(() => scrollToSection(sectionId), 100);
@@ -54,7 +52,6 @@ export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean
 
     const isActive = (sectionId: string) => {
         if (sectionId === 'contact') return false;
-        if (sectionId === 'about') return location.pathname === '/about';
         return location.pathname === '/' && activeSection === sectionId;
     };
 
