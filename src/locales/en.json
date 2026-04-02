@@ -18,8 +18,9 @@
         },
         "philosophy": {
             "title": "Philosophy",
-            "quote": "\"Physical fitness is the first requisite of happiness.\"",
-            "desc": "We believe in the transformative power of mindful movement. Our studio is designed as a sanctuary to help you find balance, strength, and grace through the art of Classical and Contemporary Pilates."
+            "quote": "We believe in movement as a form of balance.",
+            "desc": "In a hurried world, we choose to slow down and return to the essentials — to control, alignment, and awareness. For us, Pilates is not just a workout, but a practice through which the body rediscovers its natural balance.",
+            "desc2": "Aluna is a space where you learn to move correctly and feel good in your own body — not just now, but for the long term."
         },
         "classes_teaser": {
             "title": "Our Experience",
@@ -56,12 +57,24 @@
     "about": {
         "hero": {
             "title": "Our Story",
-            "desc": "ALUNA was founded on the belief that movement is medicine. We curated a space where classical tradition meets contemporary flow."
+            "desc": "Aluna Reformer Studio was born from our desire to bring a different approach to the world of movement: one where precision, posture, and correct execution are essential."
         },
-        "sanctuary": {
-            "title": "The Sanctuary",
-            "desc1": "Stepping into ALUNA is a breath of fresh air. We designed our studio to be a retreat from the noise of the city—a place where you can reconnect with your body and mind.",
-            "desc2": "Our equipment is top-of-the-line, chosen for its smoothness and safety. Every detail, from the lighting to the scent, is curated to enhance your practice."
+        "split": {
+            "eyebrow": "About Us",
+            "p1": "Aluna Reformer Studio was born from our desire to bring a different approach to the world of movement: one where precision, posture, and correct execution are essential.",
+            "p2": "As dental practitioners, we understand how important correct execution is, the role of prevention, and the impact that details have on health and quality of life. We've integrated this medical perspective into the Aluna concept, where every movement is guided and performed with attention and intention.",
+            "p3": "We believe that movement done correctly is not just about aesthetics, but about functionality, alignment, and prevention. That's why each session is carefully designed in a controlled setting, with the focus on posture, technique, and body awareness.",
+            "p4": "Aluna is a boutique studio where quality comes first — we work on an individual or semi-private basis, to give each person the attention and guidance they need."
+        },
+        "closing": {
+            "line1": "For us, Pilates is not just a workout.",
+            "line2": "It is a form of care for your own body, for the long term."
+        },
+        "philosophy": {
+            "eyebrow": "Philosophy",
+            "lead": "We believe in movement as a form of balance.",
+            "p1": "In a hurried world, we choose to slow down and return to the essentials — to control, alignment, and awareness. For us, Pilates is not just a workout, but a practice through which the body rediscovers its natural balance.",
+            "p2": "Aluna is a space where you learn to move correctly and feel good in your own body — not just now, but for the long term."
         },
         "instructors": {
             "title": "Our Instructors",

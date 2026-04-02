@@ -18,8 +18,9 @@
         },
         "philosophy": {
             "title": "Filozofie",
-            "quote": "\"Forma fizică este prima condiție a fericirii.\"",
-            "desc": "Credem în puterea transformatoare a mișcării conștiente. Studioul nostru este conceput ca un sanctuar pentru a te ajuta să găsești echilibru, forță și grație prin arta Pilates-ului Clasic și Contemporan."
+            "quote": "Credem în mișcare ca formă de echilibru.",
+            "desc": "Într-o lume grăbită, alegem să încetinim și să ne întoarcem la esențial — la control, la aliniere, la conștientizare. Pentru noi, Pilates nu este doar un antrenament, ci o practică prin care corpul își regăsește echilibrul natural.",
+            "desc2": "Aluna este un spațiu în care înveți să te miști corect și să te simți bine în propriul corp, nu doar acum, ci pe termen lung."
         },
         "classes_teaser": {
             "title": "Experiența Noastră",
@@ -56,12 +57,24 @@
     "about": {
         "hero": {
             "title": "Povestea Noastră",
-            "desc": "ALUNA a fost fondată pe credința că mișcarea este medicament. Am curat un spațiu unde tradiția clasică întâlnește fluxul contemporan."
+            "desc": "Aluna Reformer Studio a luat naștere din dorința de a aduce o abordare diferită în lumea mișcării: una în care precizia, postura și execuția corectă sunt esențiale."
         },
-        "sanctuary": {
-            "title": "Sanctuarul",
-            "desc1": "Pășind în ALUNA este o gură de aer proaspăt. Am proiectat studioul nostru să fie un refugiu de zgomotul orașului—un loc unde te poți reconecta cu corpul și mintea ta.",
-            "desc2": "Echipamentul nostru este de top, ales pentru finețe și siguranță. Fiecare detaliu, de la iluminare la parfum, este curat pentru a-ți îmbunătăți practica."
+        "split": {
+            "eyebrow": "Despre Noi",
+            "p1": "Aluna Reformer Studio a luat naștere din dorința noastră de a aduce o abordare diferită în lumea mișcării: una în care precizia, postura și execuția corectă sunt esențiale.",
+            "p2": "Fiind medici stomatologi, înțelegem cât de importantă este o execuție corectă, rolul prevenției și impactul pe care detaliile îl au asupra sănătății și calității vieții. Această perspectivă medicală am integrat-o în conceptul Aluna, unde fiecare mișcare este ghidată și realizată cu atenție și intenție.",
+            "p3": "Credem că mișcarea făcută corect nu este doar despre estetic, ci despre funcționalitate, aliniere și prevenție. De aceea, fiecare ședință este gândită cu grijă, într-un cadru controlat, unde accentul cade pe postură, tehnică și conștientizarea corpului.",
+            "p4": "Aluna este un studio boutique, în care calitatea primează — lucrăm în sistem individual sau semi-privat, pentru a oferi fiecărei persoane atenția și ghidarea de care are nevoie."
+        },
+        "closing": {
+            "line1": "Pentru noi, Pilates nu este doar un antrenament.",
+            "line2": "Este o formă de grijă față de propriul corp, pe termen lung."
+        },
+        "philosophy": {
+            "eyebrow": "Filozofie",
+            "lead": "Credem în mișcare ca formă de echilibru.",
+            "p1": "Într-o lume grăbită, alegem să încetinim și să ne întoarcem la esențial — la control, la aliniere, la conștientizare. Pentru noi, Pilates nu este doar un antrenament, ci o practică prin care corpul își regăsește echilibrul natural.",
+            "p2": "Aluna este un spațiu în care înveți să te miști corect și să te simți bine în propriul corp, nu doar acum, ci pe termen lung."
         },
         "instructors": {
             "title": "Instructorii Noștri",

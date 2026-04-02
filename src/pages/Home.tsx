@@ -146,14 +146,17 @@ export default function Home() {
                         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                     >
                         <div className="w-px h-14 bg-gradient-to-b from-transparent to-aluna-gold/50 mx-auto mb-12" />
-                        <h2 className="text-3xl md:text-5xl font-serif mb-8 text-aluna-charcoal italic leading-tight">
+                        <p className="label-eyebrow mb-8 text-aluna-gold/70">
                             {t('home.philosophy.title')}
-                        </h2>
-                        <p className="text-xl md:text-2xl text-aluna-stone leading-relaxed font-light italic">
-                            &ldquo;{t('home.philosophy.quote')}&rdquo;
                         </p>
-                        <p className="mt-8 text-base text-aluna-stone/65 leading-relaxed max-w-xl mx-auto font-light">
+                        <h2 className="text-3xl md:text-5xl font-serif mb-10 text-aluna-charcoal italic leading-tight">
+                            {t('home.philosophy.quote')}
+                        </h2>
+                        <p className="text-base text-aluna-stone/65 leading-relaxed max-w-xl mx-auto font-light">
                             {t('home.philosophy.desc')}
+                        </p>
+                        <p className="mt-5 text-base text-aluna-stone/65 leading-relaxed max-w-xl mx-auto font-light">
+                            {t('home.philosophy.desc2')}
                         </p>
                         <div className="w-px h-14 bg-gradient-to-b from-aluna-gold/50 to-transparent mx-auto mt-12" />
                     </motion.div>

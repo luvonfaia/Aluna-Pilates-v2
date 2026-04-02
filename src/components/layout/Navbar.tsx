@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useNavigate, useLocation } from 'react-router-dom';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import { useActiveSection, scrollToSection } from '../../hooks/useActiveSection';
 import { useContactModal } from '../../context/ContactModalContext';
 
 export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean) => void }) {
     const { t } = useTranslation();
+    const navigate = useNavigate();
+    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = (val: boolean) => {
@@ -38,13 +41,22 @@ export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean
     const handleNavClick = (sectionId: string) => {
         if (sectionId === 'contact') {
             openModal();
+        } else if (sectionId === 'about') {
+            navigate('/about');
+        } else if (location.pathname !== '/') {
+            navigate('/');
+            setTimeout(() => scrollToSection(sectionId), 100);
         } else {
             scrollToSection(sectionId);
         }
         toggleMenu(false);
     };
 
-    const isActive = (sectionId: string) => sectionId !== 'contact' && activeSection === sectionId;
+    const isActive = (sectionId: string) => {
+        if (sectionId === 'contact') return false;
+        if (sectionId === 'about') return location.pathname === '/about';
+        return location.pathname === '/' && activeSection === sectionId;
+    };
 
     return (
         <>

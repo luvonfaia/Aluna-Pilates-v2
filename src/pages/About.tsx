@@ -1,123 +1,120 @@
-import { useTranslation } from 'react-i18next';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { useContactModal } from '../context/ContactModalContext';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+const EASE_OUT: [number, number, number, number] = [0.25, 1, 0.5, 1];
+const REVEAL = {
+    hidden: { opacity: 0, y: 16 },
+    show:   { opacity: 1, y: 0 },
+};
 
 export default function About() {
     const { t } = useTranslation();
-    const { openModal } = useContactModal();
+    const navigate = useNavigate();
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    // ESC to close
+    useEffect(() => {
+        const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') navigate('/'); };
+        document.addEventListener('keydown', onKey);
+        return () => document.removeEventListener('keydown', onKey);
+    }, [navigate]);
 
     return (
-        <div id="about">
-            {/* Hero */}
-            <section className="relative py-24 bg-aluna-charcoal overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=2070')] bg-cover bg-center opacity-20" />
-                <div className="absolute inset-0 bg-gradient-to-b from-aluna-charcoal/70 to-aluna-charcoal/90" />
-                <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 24 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                        className="max-w-3xl"
-                    >
-                        <p className="label-eyebrow text-aluna-gold mb-6">{t('nav.about')}</p>
-                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif text-white mb-8 leading-tight">
-                            {t('about.hero.title')}
-                        </h1>
-                        <p className="text-xl md:text-2xl text-white/65 font-light leading-relaxed max-w-xl">
-                            {t('about.hero.desc')}
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
+        <div
+            id="about"
+            className="fixed inset-0 z-[170] bg-black/40 flex flex-col items-center justify-center px-4 pt-20 pb-4"
+        >
+            {/* Backdrop — click to close */}
+            <div className="absolute inset-0" onClick={() => navigate('/')} aria-hidden="true" />
 
-            {/* Main Content */}
-            <section className="py-28">
-                <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="order-2 md:order-1 relative"
-                        >
-                            <img
-                                src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=2070"
-                                alt="Studio Interior"
-                                className="w-full h-[600px] object-cover"
-                            />
-                            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-aluna-gold/15 -z-10 hidden md:block" />
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="order-1 md:order-2"
-                        >
-                            <p className="label-eyebrow mb-6">Our Story</p>
-                            <h2 className="text-3xl md:text-4xl font-serif text-aluna-charcoal mb-8 leading-tight">
-                                {t('about.sanctuary.title')}
+            <div className="relative w-full sm:w-[min(520px,calc(100%-64px))] flex flex-col items-center">
+
+                {/* Close button — identical to ContactModal */}
+                <motion.button
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    exit={{ scale: 0, rotate: 180 }}
+                    transition={{ duration: 0.6, delay: 0.3, ease: EASE_OUT }}
+                    onClick={() => navigate('/')}
+                    className="w-11 h-11 mb-3 rounded-full bg-white/90 backdrop-blur-sm border border-aluna-stone/15 shadow-lg flex items-center justify-center text-aluna-stone hover:text-aluna-charcoal hover:border-aluna-gold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-aluna-gold flex-shrink-0 cursor-pointer"
+                    aria-label="Close"
+                >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </motion.button>
+
+                {/* Panel — slides up from below */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.9, ease: EASE_OUT }}
+                    className="w-full"
+                >
+                    <div
+                        ref={scrollRef}
+                        className="bg-aluna-cream rounded-3xl sm:rounded-[24px] shadow-2xl overflow-y-auto w-full"
+                        style={{
+                            maxHeight: 'calc(100vh - 152px)',
+                            WebkitOverflowScrolling: 'touch',
+                            overscrollBehavior: 'contain',
+                        }}
+                    >
+                        {/* Header */}
+                        <div className="px-8 pt-6 pb-0 sm:px-10 sm:pt-8">
+                            <p className="label-eyebrow mb-2">{t('about.split.eyebrow')}</p>
+                            <h2 className="text-2xl sm:text-3xl font-serif text-aluna-charcoal">
+                                {t('about.hero.title')}
                             </h2>
-                            <div className="w-12 h-px bg-aluna-gold mb-8" />
-                            <p className="text-aluna-stone text-lg leading-relaxed mb-6 font-light">
-                                {t('about.sanctuary.desc1')}
-                            </p>
-                            <p className="text-aluna-stone text-lg leading-relaxed font-light">
-                                {t('about.sanctuary.desc2')}
-                            </p>
-                            <div className="mt-10">
-                                <button onClick={openModal} className="btn-primary cursor-pointer">
-                                    {t('nav.book')}
-                                </button>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
+                            <div className="w-10 h-px bg-aluna-gold mt-5" />
+                        </div>
 
-            {/* Team Section */}
-            <section className="py-28 bg-aluna-cream">
-                <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="text-center mb-16"
-                    >
-                        <p className="label-eyebrow mb-5">{t('about.instructors.title')}</p>
-                        <h2 className="text-3xl md:text-4xl font-serif text-aluna-charcoal">Meet the Team</h2>
-                    </motion.div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                        {[1, 2, 3].map((i) => (
+                        {/* Body */}
+                        <div className="px-8 pt-6 pb-8 sm:px-10 sm:pb-10 space-y-5">
+
+                            {/* Four narrative paragraphs */}
+                            {([1, 2, 3, 4] as const).map((n, i) => (
+                                <motion.p
+                                    key={n}
+                                    variants={REVEAL}
+                                    initial="hidden"
+                                    whileInView="show"
+                                    viewport={{ once: true, amount: 0.1, root: scrollRef }}
+                                    transition={{ duration: 0.65, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                                    className={`leading-relaxed font-light text-aluna-stone ${n === 1 ? 'text-base sm:text-lg' : 'text-sm sm:text-base'}`}
+                                >
+                                    {t(`about.split.p${n}`)}
+                                </motion.p>
+                            ))}
+
+                            {/* Gold pull-quote — closing statement */}
                             <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 24 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: (i - 1) * 0.12, duration: 0.7 }}
-                                className="group"
+                                variants={REVEAL}
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={{ once: true, amount: 0.1, root: scrollRef }}
+                                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                                className="pt-5 border-t border-aluna-stone/15"
                             >
-                                <div className="w-full h-[420px] bg-aluna-stone/10 mb-6 overflow-hidden relative">
-                                    <div className="absolute inset-0 bg-aluna-charcoal/0 group-hover:bg-aluna-charcoal/8 transition-colors duration-500" />
-                                    <div className="w-full h-full bg-aluna-stone/15 flex items-center justify-center text-aluna-stone/30">
-                                        <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                        </svg>
+                                <div className="flex items-start gap-3">
+                                    <div className="w-0.5 mt-1 self-stretch flex-shrink-0 bg-aluna-gold/60 rounded-full" />
+                                    <div>
+                                        <p className="text-sm sm:text-base font-serif text-aluna-charcoal italic leading-snug mb-1">
+                                            {t('about.closing.line1')}
+                                        </p>
+                                        <p className="text-sm sm:text-base font-serif text-aluna-gold italic leading-snug">
+                                            {t('about.closing.line2')}
+                                        </p>
                                     </div>
                                 </div>
-                                <h3 className="text-xl font-serif text-aluna-charcoal mb-1">Instructor Name</h3>
-                                <p className="text-aluna-gold text-[10px] uppercase tracking-[0.3em] mb-3">{t('about.instructors.role')}</p>
-                                <p className="text-aluna-stone/75 text-sm leading-relaxed font-light">
-                                    {t('about.instructors.bio')}
-                                </p>
                             </motion.div>
-                        ))}
+
+
+                        </div>
                     </div>
-                </div>
-            </section>
+                </motion.div>
+            </div>
         </div>
     );
 }
