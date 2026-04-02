@@ -1,9 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import spotlightImg from '../../assets/spotlight-studio.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -202,39 +200,6 @@ export default function PricingSection() {
                     </div>
                 </div>
 
-                {/* The Aluna Method — editorial two-column */}
-                <div className="mt-16 lg:mt-24">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-end">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                            className="lg:col-span-7 aspect-[4/5] overflow-hidden"
-                        >
-                            <img
-                                src={spotlightImg}
-                                alt="The Aluna Method"
-                                className="w-full h-full object-cover"
-                            />
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                            className="lg:col-span-5 bg-white shadow-xl p-10 lg:p-14 lg:-ml-16 lg:mb-16 relative z-10"
-                        >
-                            <div className="w-8 h-px bg-aluna-gold mb-8" />
-                            <h3 className="text-3xl md:text-4xl font-serif text-aluna-charcoal mb-6 leading-tight">
-                                {t('pricing.method.title')}
-                            </h3>
-                            <p className="text-aluna-stone font-light leading-relaxed text-sm md:text-base mb-10">
-                                {t('pricing.method.desc')}
-                            </p>
-                        </motion.div>
-                    </div>
-                </div>
             </div>
         </section>
     );
