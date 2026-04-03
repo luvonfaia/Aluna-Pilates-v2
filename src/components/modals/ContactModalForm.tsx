@@ -176,16 +176,18 @@ export default function ContactModalForm() {
             {/* Privacy Checkbox */}
             <PrivacyCheckbox control={control} isDisabled={isSubmitting} />
 
-            {/* Submit Button */}
-            <motion.button
-                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                type="submit"
-                disabled={isSubmitting || !agreePrivacy}
-                className="w-full py-3 mt-6 bg-aluna-charcoal text-aluna-alabaster rounded font-semibold hover:bg-aluna-gold hover:text-aluna-charcoal transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus:outline-none focus:ring-2 focus:ring-aluna-gold focus:ring-offset-2"
-            >
-                {isSubmitting ? t('contact_modal.form.submitting') : t('contact_modal.form.submit')}
-            </motion.button>
+            {/* Submit Button — sticky so it's always visible on mobile */}
+            <div className="sticky bottom-0 -mx-8 sm:-mx-10 px-8 sm:px-10 pt-3 pb-8 bg-aluna-cream">
+                <motion.button
+                    whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                    type="submit"
+                    disabled={isSubmitting || !agreePrivacy}
+                    className="w-full py-3 bg-aluna-charcoal text-aluna-alabaster rounded font-semibold hover:bg-aluna-gold hover:text-aluna-charcoal transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus:outline-none focus:ring-2 focus:ring-aluna-gold focus:ring-offset-2"
+                >
+                    {isSubmitting ? t('contact_modal.form.submitting') : t('contact_modal.form.submit')}
+                </motion.button>
+            </div>
         </motion.form>
     );
 }

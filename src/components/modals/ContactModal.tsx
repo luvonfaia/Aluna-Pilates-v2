@@ -86,7 +86,7 @@ export default function ContactModal() {
                                 </svg>
                             </motion.button>
 
-                            <div className="bg-aluna-cream rounded-3xl sm:rounded-[24px] shadow-2xl max-h-[85vh] overflow-y-auto w-full">
+                            <div className="bg-aluna-cream rounded-3xl sm:rounded-[24px] shadow-2xl max-h-[85dvh] overflow-y-auto w-full">
 
                                 {/* ── Header ── */}
                                 <div className="px-8 pt-4 pb-2 sm:px-10 sm:pt-6 sm:pb-3">
@@ -131,7 +131,7 @@ export default function ContactModal() {
                                 )}
 
                                 {/* ── Content (state router) ── */}
-                                <div className="px-8 pb-8 sm:px-10 sm:pb-10">
+                                <div className="px-8 pb-0 sm:px-10 sm:pb-0">
                                     <AnimatePresence mode="wait">
                                         {submissionState === 'idle' && (
                                             <motion.div
