@@ -5,6 +5,23 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import { useActiveSection, scrollToSection } from '../../hooks/useActiveSection';
 
+function MailIcon({ className }: { className?: string }) {
+    return (
+        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="M2 7l10 7 10-7" />
+        </svg>
+    );
+}
+
+function PhoneIcon({ className }: { className?: string }) {
+    return (
+        <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+        </svg>
+    );
+}
+
 function WhatsAppIcon({ className }: { className?: string }) {
     return (
         <svg className={className} viewBox="0 0 24 24" fill="none">
@@ -220,15 +237,17 @@ export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean
                                 >
                                     <a
                                         href="mailto:hello@alunareformerstudio.ro"
-                                        className="px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-white/70 text-sm tracking-wide hover:text-white hover:bg-white/10 transition-colors duration-200"
+                                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-white/70 text-sm tracking-wide hover:text-white hover:bg-white/10 transition-colors duration-200"
                                     >
+                                        <MailIcon className="w-4 h-4 flex-shrink-0" />
                                         hello@alunareformerstudio.ro
                                     </a>
                                     <a
                                         href="tel:+40786704688"
-                                        className="px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-white/70 text-sm tracking-wide hover:text-white hover:bg-white/10 transition-colors duration-200"
+                                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-white/70 text-sm tracking-wide hover:text-aluna-gold hover:bg-white/10 transition-colors duration-200"
                                     >
-                                        0786 704 688
+                                        <PhoneIcon className="w-4 h-4 flex-shrink-0" />
+                                        +40 (786) 704 688
                                     </a>
                                     <a
                                         href="https://wa.me/40786704688"

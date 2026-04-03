@@ -1,18 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { scrollToSection } from '../../hooks/useActiveSection';
-import { useContactModal } from '../../context/ContactModalContext';
-
 export default function Footer() {
     const { t } = useTranslation();
-    const { openModal } = useContactModal();
     const currentYear = new Date().getFullYear();
 
     const navLinks = [
         { label: t('nav.about'), onClick: () => scrollToSection('about') },
         { label: t('nav.schedule'), onClick: () => scrollToSection('schedule') },
         { label: t('nav.pricing'), onClick: () => scrollToSection('pricing') },
-        { label: t('nav.contact'), onClick: openModal },
     ];
 
     return (
