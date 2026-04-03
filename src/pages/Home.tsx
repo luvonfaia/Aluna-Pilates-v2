@@ -98,6 +98,9 @@ export default function Home() {
                     >
                         <button
                             onClick={() => scrollToSection('pricing')}
+                            style={{
+                                animation: 'badgeFloat 4s ease-in-out infinite, badgeBreathe 3.5s ease-in-out infinite',
+                            }}
                             className="relative overflow-hidden flex items-center gap-3 bg-white/8 backdrop-blur-sm border border-white/15 px-5 py-3 hover:bg-white/15 transition-colors duration-300 cursor-pointer"
                         >
                             {/* Gold shimmer sweep */}

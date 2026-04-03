@@ -56,6 +56,19 @@
   100% { transform: translateX(300%) skewX(-15deg); }
 }
 
+@keyframes badgeFloat {
+  0%   { transform: translateY(0px)  skewX(0deg); }
+  20%  { transform: translateY(-1px) skewX(1.4deg); }
+  50%  { transform: translateY(-3px) skewX(0deg); }
+  75%  { transform: translateY(-1px) skewX(-1.4deg); }
+  100% { transform: translateY(0px)  skewX(0deg); }
+}
+
+@keyframes badgeBreathe {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.82; }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

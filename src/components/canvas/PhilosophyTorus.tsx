@@ -20,6 +20,9 @@ function TorusScene() {
   const progressRef  = useRef(0);
 
   useEffect(() => {
+    // Refresh after fonts/images settle so ScrollTrigger measures correct positions
+    ScrollTrigger.refresh();
+
     const trigger = ScrollTrigger.create({
       trigger: '#philosophy',
       start: 'top bottom',
@@ -83,7 +86,9 @@ function TorusScene() {
 // -----------------------------------------------------------------------------
 export default function PhilosophyTorus() {
   // Skip on mobile — saves a WebGL context and CPU/GPU budget
-  if (typeof window !== 'undefined' && window.innerWidth < 768) return null;
+  // Use matchMedia so it evaluates correctly at runtime after lazy-load
+  const isMobile = typeof window !== 'undefined' && !window.matchMedia('(min-width: 768px)').matches;
+  if (isMobile) return null;
 
   return (
     <Canvas
