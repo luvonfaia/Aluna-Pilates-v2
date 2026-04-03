@@ -97,7 +97,7 @@ const PILL_SHADOW =
 // ─── Main component ─────────────────────────────────────────────────────────
 export default function FloatingCTA({ cookieBannerVisible = false, menuOpen = false }: { cookieBannerVisible?: boolean; menuOpen?: boolean }) {
     const { t } = useTranslation();
-    const { openModal, isOpen: modalOpen } = useContactModal();
+    const { isOpen: modalOpen } = useContactModal();
     const [onDark, setOnDark] = useState(true);
     const [bottomPx, setBottomPx] = useState(16);
 
@@ -362,10 +362,10 @@ export default function FloatingCTA({ cookieBannerVisible = false, menuOpen = fa
                 </a>
 
                 {/* ── Contact pill ── */}
-                <button
-                    onClick={openModal}
+                <a
+                    href="mailto:hello@alunareformerstudio.ro"
                     onMouseEnter={onContactEnter}
-                    aria-label="Open contact form"
+                    aria-label="Email us"
                     className={`relative h-10 px-4 sm:px-5 lg:px-6 rounded-full overflow-hidden flex items-center justify-center cursor-pointer transition-colors duration-500 ${innerClass}`}
                     style={{ boxShadow: PILL_SHADOW }}
                 >
@@ -380,7 +380,7 @@ export default function FloatingCTA({ cookieBannerVisible = false, menuOpen = fa
                             color={textColor}
                         />
                     </div>
-                </button>
+                </a>
 
                 {/* ── WhatsApp pill ── */}
                 <a
