@@ -78,9 +78,7 @@ export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean
                             </a>
                         </div>
                         <div className="flex items-center gap-4 sm:gap-7">
-                            <div className={scrolled ? '' : 'text-white/60'}>
-                                <LanguageSwitcher />
-                            </div>
+                            <LanguageSwitcher onDark={!scrolled} />
                         </div>
                     </div>
                 </div>
