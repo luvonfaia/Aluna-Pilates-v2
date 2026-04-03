@@ -173,7 +173,7 @@ export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean
                             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                         >
                             {/* Dark backdrop — page shows through dimmed */}
-                            <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+                            <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
 
                             {/* Content */}
                             <div className="relative flex flex-col h-full px-6 sm:px-10">
@@ -197,12 +197,12 @@ export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean
                                         >
                                             <button
                                                 onClick={() => handleNavClick(item.sectionId)}
-                                                className="group flex items-center gap-2.5 pl-5 pr-1.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white cursor-pointer hover:bg-white/18 transition-colors duration-200"
+                                                className="group flex items-center gap-2.5 pl-5 pr-1.5 py-1.5 rounded-full bg-white/[0.14] backdrop-blur-xl border border-white/20 text-white cursor-pointer hover:bg-white/20 transition-colors duration-200"
                                             >
                                                 <span className="text-[15px] font-medium tracking-wide">
                                                     {item.name}
                                                 </span>
-                                                <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 group-hover:bg-white/30 transition-colors duration-200">
+                                                <span className="w-8 h-8 rounded-full bg-aluna-gold/20 border border-aluna-gold/40 text-aluna-gold flex items-center justify-center flex-shrink-0 group-hover:bg-aluna-gold/35 group-hover:border-aluna-gold/60 transition-colors duration-200">
                                                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                                     </svg>
@@ -212,9 +212,9 @@ export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean
                                     ))}
                                 </nav>
 
-                                {/* Contact info pills */}
+                                {/* Contact info pills — pinned to bottom */}
                                 <motion.div
-                                    className="flex flex-col items-end gap-2 mt-6"
+                                    className="flex flex-col items-end gap-2 mt-auto mb-10"
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
@@ -222,13 +222,13 @@ export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean
                                 >
                                     <a
                                         href="mailto:hello@alunareformerstudio.ro"
-                                        className="px-4 py-2 rounded-full bg-white/[0.12] border border-white/20 text-white text-sm tracking-wide hover:bg-white/12 transition-colors duration-200"
+                                        className="px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-white/70 text-sm tracking-wide hover:text-white hover:bg-white/10 transition-colors duration-200"
                                     >
                                         hello@alunareformerstudio.ro
                                     </a>
                                     <a
                                         href="tel:+40786704688"
-                                        className="px-4 py-2 rounded-full bg-white/[0.12] border border-white/20 text-white text-sm tracking-wide hover:bg-white/12 transition-colors duration-200"
+                                        className="px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-white/70 text-sm tracking-wide hover:text-white hover:bg-white/10 transition-colors duration-200"
                                     >
                                         0786 704 688
                                     </a>
@@ -236,14 +236,11 @@ export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean
                                         href="https://wa.me/40786704688"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.12] border border-white/20 text-white text-sm tracking-wide hover:text-[#25D366] hover:bg-white/12 transition-colors duration-200"
+                                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-white/70 text-sm tracking-wide hover:text-[#25D366] hover:bg-white/10 transition-colors duration-200"
                                     >
                                         <WhatsAppIcon className="w-4 h-4 flex-shrink-0" />
                                         WhatsApp
                                     </a>
-                                    <p className="text-sm font-serif mt-1 pr-1 tracking-widest bg-gradient-to-r from-white/30 via-white/60 to-white/30 bg-clip-text text-transparent">
-                                        Aluna Reformer Studio
-                                    </p>
                                 </motion.div>
                             </div>
                         </motion.div>
