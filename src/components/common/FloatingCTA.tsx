@@ -332,6 +332,7 @@ export default function FloatingCTA({ cookieBannerVisible = false, menuOpen = fa
                 y: { duration: 1, ease: [0.25, 1, 0.5, 1] },
                 bottom: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
             }}
+            style={{ pointerEvents: (modalOpen || menuOpen) ? 'none' : 'auto' }}
             className="fixed left-1/2 -translate-x-1/2 z-[201] flex flex-col items-center"
         >
             <div
