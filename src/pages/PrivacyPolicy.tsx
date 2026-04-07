@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +10,7 @@ export default function PrivacyPolicy() {
 
     return (
         <PageTransition>
+            <Helmet><link rel="canonical" href="https://alunareformerstudio.ro/privacy" /></Helmet>
             <div className="min-h-screen bg-aluna-alabaster pt-32 pb-24">
                 <div className="max-w-3xl mx-auto px-6">
                     <motion.div

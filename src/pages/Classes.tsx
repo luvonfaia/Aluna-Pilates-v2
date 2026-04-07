@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useContactModal } from '../context/ContactModalContext';
@@ -42,6 +43,7 @@ export default function Classes() {
 
     return (
         <div id="classes">
+            <Helmet><link rel="canonical" href="https://alunareformerstudio.ro/classes" /></Helmet>
             {/* Hero */}
             <section className="bg-aluna-alabaster pt-16 pb-20 text-center">
                 <div className="max-w-4xl mx-auto px-6">

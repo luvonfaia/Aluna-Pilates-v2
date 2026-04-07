@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
@@ -30,6 +31,7 @@ export default function Gallery() {
 
     return (
         <div id="gallery">
+            <Helmet><link rel="canonical" href="https://alunareformerstudio.ro/gallery" /></Helmet>
             {/* Hero */}
             <section className="py-20 bg-aluna-alabaster text-center">
                 <motion.div

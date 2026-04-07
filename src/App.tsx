@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
@@ -50,12 +51,14 @@ function AppLayout() {
 
 function App() {
   return (
+    <HelmetProvider>
     <ContactModalProvider>
       <BrowserRouter>
         <ScrollToTop />
         <AppLayout />
       </BrowserRouter>
     </ContactModalProvider>
+    </HelmetProvider>
   );
 }
 

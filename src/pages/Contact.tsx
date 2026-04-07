@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
@@ -14,6 +15,7 @@ export default function Contact() {
 
     return (
         <PageTransition>
+            <Helmet><link rel="canonical" href="https://alunareformerstudio.ro/contact" /></Helmet>
             <div>
                 <section className="bg-aluna-alabaster py-[60px] text-center">
                     <motion.div

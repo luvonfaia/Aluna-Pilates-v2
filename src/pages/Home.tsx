@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useRef, useEffect, lazy, Suspense } from 'react';
@@ -22,6 +23,8 @@ export default function Home() {
     }, []);
 
     return (
+        <>
+        <Helmet><link rel="canonical" href="https://alunareformerstudio.ro/" /></Helmet>
         <div id="home" className="overflow-hidden">
             {/* Hero Section – Full-screen video background */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -244,5 +247,6 @@ export default function Home() {
             <ReviewsSection />
             <LocationSection />
         </div>
+        </>
     );
 }
