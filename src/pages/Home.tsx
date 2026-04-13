@@ -52,7 +52,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                        className="text-5xl sm:text-7xl md:text-[7rem] font-serif italic text-white mb-4 sm:mb-7 leading-[1.05] sm:leading-[0.95] tracking-tight"
+                        className="hidden md:block text-5xl sm:text-7xl md:text-[7rem] font-serif italic text-white mb-4 sm:mb-7 leading-[1.05] sm:leading-[0.95] tracking-tight"
                     >
                         {(() => {
                             const parts = t('home.hero.title').split('|');
