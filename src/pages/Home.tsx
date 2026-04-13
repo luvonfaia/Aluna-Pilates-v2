@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useRef, useEffect, lazy, Suspense } from 'react';
 import { scrollToSection } from '../hooks/useActiveSection';
+import { GMA_BOOKING_URL } from '../config/formConfig';
 import WaveTransition from '../components/canvas/WaveTransition';
 import ScheduleSection from '../components/sections/ScheduleSection';
 import PricingSection from '../components/sections/PricingSection';
@@ -84,9 +85,14 @@ export default function Home() {
                         transition={{ duration: 0.8, delay: 1 }}
                         className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
-                        <button onClick={() => scrollToSection('schedule')} className="btn-primary-light">
-                            {t('nav.schedule')}
-                        </button>
+                        <a
+                            href={GMA_BOOKING_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-primary-light"
+                        >
+                            {t('nav.book')}
+                        </a>
                         <button onClick={() => scrollToSection('pricing')} className="btn-ghost">
                             {t('nav.pricing')}
                         </button>

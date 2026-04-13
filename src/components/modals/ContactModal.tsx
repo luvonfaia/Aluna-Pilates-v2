@@ -122,6 +122,7 @@ export default function ContactModal() {
                                                 <span className="text-[11px] font-medium tracking-wide">WhatsApp</span>
                                             </a>
                                         </div>
+
                                         <div className="flex items-center gap-3 mt-5 mb-1">
                                             <div className="flex-1 h-px bg-aluna-stone/15" />
                                             <span className="text-[10px] uppercase tracking-[0.2em] text-aluna-stone/50">{t('contact_modal.or_send_message')}</span>

@@ -1,4 +1,10 @@
 /**
+ * External booking platform URL (Gym Management App)
+ */
+export const GMA_BOOKING_URL =
+    'https://alunareformerstudio.gym-management-app.com/leads/new?locale=ro&mobile_app=true';
+
+/**
  * Contact Form Configuration
  * Customize form behavior, messages, and styling
  */

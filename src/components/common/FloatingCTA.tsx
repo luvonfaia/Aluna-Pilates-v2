@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { useTranslation } from 'react-i18next';
 import { useContactModal } from '../../context/ContactModalContext';
+import { GMA_BOOKING_URL } from '../../config/formConfig';
 
 const EASE_OUT = 'cubic-bezier(0.25, 1, 0.5, 1)';
 
@@ -67,12 +68,12 @@ function PhoneSVG({ className }: { className?: string }) {
     );
 }
 
-// ─── Mail SVG (contact pill icon on mobile) ──────────────────────────────────
-function MailSVG({ className }: { className?: string }) {
+// ─── Calendar SVG (book pill icon on mobile) ─────────────────────────────────
+function CalendarSVG({ className }: { className?: string }) {
     return (
         <svg className={`w-5 h-5 ${className ?? ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-            <path d="M2 7l10 7 10-7" />
+            <rect x="3" y="4" width="18" height="18" rx="2" />
+            <path d="M16 2v4M8 2v4M3 10h18" />
         </svg>
     );
 }
@@ -361,20 +362,22 @@ export default function FloatingCTA({ cookieBannerVisible = false, menuOpen = fa
                     </div>
                 </a>
 
-                {/* ── Contact pill ── */}
+                {/* ── Book pill ── */}
                 <a
-                    href="mailto:hello@alunareformerstudio.ro"
+                    href={GMA_BOOKING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onMouseEnter={onContactEnter}
-                    aria-label="Email us"
+                    aria-label="Book a session"
                     className={`relative h-11 px-5 sm:px-5 lg:px-6 rounded-full overflow-hidden flex items-center justify-center cursor-pointer transition-colors duration-500 ${innerClass}`}
                     style={{ boxShadow: PILL_SHADOW }}
                 >
-                    {/* Mail icon shown only on mobile */}
-                    <MailSVG className={`sm:hidden flex-shrink-0 ${mailColor}`} />
+                    {/* Calendar icon shown only on mobile */}
+                    <CalendarSVG className={`sm:hidden flex-shrink-0 ${mailColor}`} />
                     {/* Text hidden below sm */}
                     <div className="hidden sm:block">
                         <SplitLabel
-                            text={t('floating_cta.contact')}
+                            text={t('floating_cta.book')}
                             charsOutRef={contactCharsOut}
                             charsInRef={contactCharsIn}
                             color={textColor}

@@ -4,7 +4,6 @@ import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
-import Classes from './pages/Classes';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
@@ -29,7 +28,7 @@ function AppLayout() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<Navigate to="/" replace />} />
-          <Route path="/classes" element={<Classes />} />
+          <Route path="/classes" element={<Navigate to="/" replace />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />

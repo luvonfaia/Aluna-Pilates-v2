@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { GMA_BOOKING_URL } from '../../config/formConfig';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -145,14 +146,23 @@ export default function ScheduleSection() {
                     </div>
                 </div>
 
-                {/* Promo banner */}
-                <div
-                    ref={promoRef}
-                    className="bg-aluna-charcoal mt-0 md:mt-8 py-5 px-8 text-center"
-                >
-                    <p className="text-aluna-gold font-serif text-lg italic tracking-wide">
-                        ✦ {t('schedule.promo')} ✦
-                    </p>
+                {/* Promo banner + CTA */}
+                <div ref={promoRef}>
+                    <div className="bg-aluna-charcoal mt-0 md:mt-8 py-5 px-8 text-center">
+                        <p className="text-aluna-gold font-serif text-lg italic tracking-wide">
+                            ✦ {t('schedule.promo')} ✦
+                        </p>
+                    </div>
+                    <div className="flex justify-center mt-8">
+                        <a
+                            href={GMA_BOOKING_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-primary"
+                        >
+                            {t('schedule.cta')}
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

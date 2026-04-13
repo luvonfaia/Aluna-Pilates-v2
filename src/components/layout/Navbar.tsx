@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import { useActiveSection, scrollToSection } from '../../hooks/useActiveSection';
+import { GMA_BOOKING_URL } from '../../config/formConfig';
 
 function MailIcon({ className }: { className?: string }) {
     return (
@@ -145,6 +146,18 @@ export default function Navbar({ onMenuToggle }: { onMenuToggle?: (open: boolean
                                         )}
                                     </button>
                                 ))}
+                                <a
+                                    href={GMA_BOOKING_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`text-[11px] tracking-[0.18em] uppercase font-medium px-5 py-2 rounded-full transition-all duration-300 ${
+                                        scrolled
+                                            ? 'border border-aluna-charcoal text-aluna-charcoal hover:bg-aluna-charcoal hover:text-white'
+                                            : 'border border-white/60 text-white hover:bg-white/10'
+                                    }`}
+                                >
+                                    {t('nav.book')}
+                                </a>
                             </div>
 
                             {/* Mobile Hamburger — becomes styled close button when open */}

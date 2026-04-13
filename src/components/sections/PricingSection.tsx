@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { GMA_BOOKING_URL } from '../../config/formConfig';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -197,6 +198,14 @@ export default function PricingSection() {
                                 <p className="text-[9px] uppercase tracking-widest text-aluna-stone mt-0.5">OFF</p>
                             </div>
                         </div>
+                        <a
+                            href={GMA_BOOKING_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-primary whitespace-nowrap"
+                        >
+                            {t('nav.book')}
+                        </a>
                     </div>
                 </div>
 
