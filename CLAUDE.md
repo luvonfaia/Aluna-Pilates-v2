@@ -34,21 +34,21 @@ Single-page app — all main content lives under `/` (Home). Other routes are se
 | Path | Component | Notes |
 |------|-----------|-------|
 | `/` | `Home` | All main sections (hero, philosophy, about, schedule, pricing, reviews, location) |
-| `/classes` | `Classes` | Class types + pricing packages |
+| `/classes` | redirect → `/` | Removed — content lives on Home |
 | `/gallery` | `Gallery` | Masonry image grid with lightbox |
 | `/contact` | `Contact` | Standalone contact page |
 | `/cookie-policy` | `CookiePolicy` | Cookie policy (RO/EN) |
 | `/privacy` | `PrivacyPolicy` | Privacy policy |
-| `/about` | redirect → `/` | About is now an in-page section on Home |
+| `/about` | redirect → `/` | About is an in-page section on Home |
 | `*` | `NotFound` | 404 page |
 
 ### Home page sections (in order)
-1. **Hero** — full-screen video background (`/intro.mp4`), animated headline/subtitle, two CTA buttons (Schedule / Pricing), animated 10% opening offer badge with gold shimmer
+1. **Hero** — full-screen video background (`/intro.mp4`), animated headline/subtitle, two CTA buttons (**Rezervă → GMA** / Tarife), animated 10% opening offer badge with gold shimmer
 2. **WaveTransition** — WebGL canvas wave that rises between hero and philosophy on scroll
 3. **Philosophy** — centered quote section with lazy-loaded 3D torus rings (Three.js/R3F, scroll-scrubbed opacity/rotation)
 4. **About** — two-column text section with closing pull-quote (`id="about"`)
-5. **ScheduleSection** — opening hours + "Why Aluna?" benefits list, GSAP scroll-scrub animations (`id="schedule"`)
-6. **PricingSection** — Individual + Semi-Private pricing cards with scroll-scrub sweep animations (desktop: left/right; mobile: vertical), 10% opening offer block (`id="pricing"`)
+5. **ScheduleSection** — opening hours + "Why Aluna?" benefits list, GSAP scroll-scrub animations, **"Rezervă Locul" → GMA** button below promo banner (`id="schedule"`)
+6. **PricingSection** — Individual + Semi-Private pricing cards with scroll-scrub sweep animations (desktop: left/right; mobile: vertical), 10% opening offer block with **"Rezervă" → GMA** button (`id="pricing"`)
 7. **ReviewsSection** — auto-advancing carousel of 13 Google reviews, dot indicators, prev/next controls (`id="reviews"`)
 8. **LocationSection** — Google Maps embed, info card (desktop: overlay on map; mobile: below map)
 
@@ -150,10 +150,22 @@ No `tailwind.config.js`. All customization via `@theme` in `src/index.css`.
 - **GSAP + ScrollTrigger**: scroll-scrub for Schedule cards, Pricing cards (desktop: x-sweep, mobile: y-rise), Philosophy torus opacity
 - **GSAP character-split**: FloatingCTA pill labels animate char-by-char on hover (yPercent stagger)
 
+### GMA Booking Integration
+External booking platform URL is defined once in `src/config/formConfig.ts` as `GMA_BOOKING_URL` and imported wherever needed. All booking CTAs open GMA in a new tab (`target="_blank"`).
+
+**Booking entry points (all → GMA):**
+| Location | Element |
+|----------|---------|
+| Hero | Primary "Rezervă" button |
+| Navbar (desktop) | Outlined pill — top right, always visible |
+| FloatingCTA | Middle pill (calendar icon on mobile, "Rezervă" text on sm+) |
+| Schedule section | "Rezervă Locul" button below promo banner |
+| Pricing section | "Rezervă" button in the 10% opening offer block |
+
 ### Navigation
 Navbar has two strips:
 1. **Top info strip** — Instagram link + LanguageSwitcher; transitions from translucent to `aluna-alabaster` on scroll
-2. **Main nav bar** — logo + desktop nav links; transparent → solid on scroll; collapses to hamburger on mobile
+2. **Main nav bar** — logo + desktop nav links + **"Rezervă" CTA pill** (right side); transparent → solid on scroll; collapses to hamburger on mobile
 
 **Burger menu** (mobile): jeskojets-style full-screen overlay, right-aligned pill nav links with gold arrow icons, contact info pills (email, phone, WhatsApp) pinned to bottom. Backdrop dims the page. Logo hides while open.
 
@@ -168,7 +180,7 @@ Global modal managed by `ContactModalContext`. Triggered by `openModal()` from a
 - Hidden (opacity 0, pointer-events none) when burger menu is open
 
 ### FloatingCTA
-Fixed 3-pill bar centered at bottom. Pills: Phone, Email/Contact, WhatsApp.
+Fixed 3-pill bar centered at bottom. Pills: Phone, **Rezervă (GMA)**, WhatsApp.
 - **Adaptive color**: detects luminance of background under the bar via `elementsFromPoint`, switches between dark-glass and light-glass themes
 - **GSAP hover**: character-split text (yPercent stagger), icon bounce on phone/WhatsApp pills
 - **Visibility**: hidden (animated out) when ContactModal or burger menu is open; rises above CookieBanner when visible
