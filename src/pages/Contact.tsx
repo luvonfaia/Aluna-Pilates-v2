@@ -15,7 +15,11 @@ export default function Contact() {
 
     return (
         <PageTransition>
-            <Helmet><link rel="canonical" href="https://alunareformerstudio.ro/contact" /></Helmet>
+            <Helmet>
+                <title>Contact | Aluna Reformer Studio București</title>
+                <meta name="description" content="Contactează Aluna Reformer Studio din București. Programează o ședință de Pilates Reformer sau solicită informații despre pachete și prețuri." />
+                <link rel="canonical" href="https://alunareformerstudio.ro/contact" />
+            </Helmet>
             <div>
                 <section className="bg-aluna-alabaster py-[60px] text-center">
                     <motion.div

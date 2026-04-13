@@ -10,7 +10,10 @@ export default function PrivacyPolicy() {
 
     return (
         <PageTransition>
-            <Helmet><link rel="canonical" href="https://alunareformerstudio.ro/privacy" /></Helmet>
+            <Helmet>
+                <link rel="canonical" href="https://alunareformerstudio.ro/privacy" />
+                <meta name="robots" content="noindex, nofollow" />
+            </Helmet>
             <div className="min-h-screen bg-aluna-alabaster pt-32 pb-24">
                 <div className="max-w-3xl mx-auto px-6">
                     <motion.div

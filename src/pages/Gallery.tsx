@@ -31,7 +31,11 @@ export default function Gallery() {
 
     return (
         <div id="gallery">
-            <Helmet><link rel="canonical" href="https://alunareformerstudio.ro/gallery" /></Helmet>
+            <Helmet>
+                <title>Galerie | Aluna Reformer Studio București</title>
+                <meta name="description" content="Descoperă spațiul nostru boutique de Pilates Reformer din București — echipamente premium, atmosferă de sanctuar și mediu creat pentru mișcare conștientă." />
+                <link rel="canonical" href="https://alunareformerstudio.ro/gallery" />
+            </Helmet>
             {/* Hero */}
             <section className="py-20 bg-aluna-alabaster text-center">
                 <motion.div
